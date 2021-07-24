@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bot
+namespace ApuDoingStuff.Commands
 {
     public enum CommandType
     {
         Ping,
         Color,
-        Laurin,
+
+
 
 
     }

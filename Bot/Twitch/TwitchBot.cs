@@ -16,9 +16,13 @@ using TwitchLib.Communication.Models;
 using TwitchLib.Api.Core.HttpCallHandlers;
 using static HLE.Time.TimeHelper;
 using Timers = System.Timers;
-using Bot.;
+using ApuDoingStuff.Properties;
+using static ApuDoingStuff.Program;
+using ApuDoingStuff;
+using ApuDoingStuff.Commands;
+using ApuDoingStuff.Messages;
 
-namespace TwitchBot
+namespace ApuDoingStuff.Twitch
 {
     public class TwitchBot
     {
@@ -40,27 +44,12 @@ namespace TwitchBot
 
         private readonly long _runtime = Now();
 
-        internal void Connect(bool isLogging)
-        {
-            client = new TwitchClient();
-            client.Initialize(creds, TwitchInfo.ChannelName);
-
-            if (isLogging)
-                client.OnLog += Client_OnLog;
-
-            client.OnError += Client_OnError;
-            client.OnMessageReceived += Client_OnMessageReceived;
-            client.OnChatCommandReceived += Client_OnChatCommandReceived;
-
-            client.Connect();
-            client.OnConnected += Client_OnConnect;
-
-        }
-
 
 
         public TwitchBot()
         {
+            ConnectionCredentials = new("ApuDoingStuff", Resources.Token);
+
 
 
             ClientOptions = new()
@@ -75,7 +64,7 @@ namespace TwitchBot
             {
                 AutoReListenOnException = true
             };
-
+            TwitchClient.Initialize(ConnectionCredentials, Config.GetChannels());
             TwitchClient.OnLog += Client_OnLog;
             TwitchClient.OnConnected += Client_OnConnected;
             TwitchClient.OnJoinedChannel += Client_OnJoinedChannel;
@@ -92,6 +81,8 @@ namespace TwitchBot
 
         }
 
+
+
         public void SetBot()
         {
             _apu = this;
@@ -99,20 +90,7 @@ namespace TwitchBot
 
         public void Send(string channel, string message)
         {
-            if (!Config.NotAllowedChannels.Contains(channel.RemoveHashtag()))
-            {
-                string emoteInFront = EmoteInFrontHelper.GetEmote(channel);
-                if ($"{emoteInFront} {message} {Resources.ChatterinoChar}".Length <= Config.MaxMessageLength)
-                {
-                    message = message == LastMessagesHelper.GetLastMessage(channel, message) ? $"{message} {Resources.ChatterinoChar}" : message;
-                    TwitchClient.SendMessage(channel.RemoveHashtag(), $"{emoteInFront} {message}");
-                    LastMessagesHelper.SetLastMessage(channel, message);
-                }
-                else
-                {
-                    new DividedMessage(this, channel, emoteInFront, message).StartSending();
-                }
-            }
+            TwitchClient.SendMessage(channel, message);
         }
 
         public void JoinChannel(string channel)
@@ -123,7 +101,7 @@ namespace TwitchBot
 
         public string GetSystemInfo()
         {
-            return $"Uptime: {Runtime} || Memory usage: {GetMemoryUsage()}MB || Executed commands: {CommandCount}";
+            return $"Uptime: {Runtime} ApuSpin Memory usage: {GetMemoryUsage()}MB ApuSpin Executed commands: {CommandCount}";
         }
 
         private static double GetMemoryUsage()
@@ -142,7 +120,7 @@ namespace TwitchBot
 
         private void Client_OnConnected(object sender, OnConnectedArgs e)
         {
-            ConsoleOut("BOT>CONNECTED", true, ConsoleColor.Red);
+            ConsoleOut("BOT>CONNECTED", ConsoleColor.Red);
         }
 
         private void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
@@ -152,99 +130,45 @@ namespace TwitchBot
 
         private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
         {
-            Thread thread = new(OnMessage);
-            thread.Start(e.ChatMessage);
+            MessageHandler.Handle(_apu, e.ChatMessage);
 
-            ConsoleOut($"#{e.ChatMessage.Channel}>{e.ChatMessage.Username}: {e.ChatMessage.GetMessage()}");
+            ConsoleOut($"#{e.ChatMessage.Channel}>{e.ChatMessage.Username}: {e.ChatMessage.Message}");
         }
 
         private void Client_OnMessageSent(object sender, OnMessageSentArgs e)
         {
-            ConsoleOut($"#{e.SentMessage.Channel}>{Resources.Username}: {e.SentMessage.Message}", fontColor: ConsoleColor.Green);
+            ConsoleOut($"#{e.SentMessage.Channel}>{Resources.TwitchChannel}: {e.SentMessage.Message}", fontColor: ConsoleColor.Green);
         }
 
         private void Client_OnWhisperReceived(object sender, OnWhisperReceivedArgs e)
         {
-            WhisperHandler.Handle(this, e.WhisperMessage);
 
             ConsoleOut($"WHISPER>{e.WhisperMessage.Username}: {e.WhisperMessage.Message}");
         }
 
         private void Client_OnConnectionError(object sender, OnConnectionErrorArgs e)
         {
-            ConsoleOut($"CONNECTION-ERROR>{e.Error.Message}", true, ConsoleColor.Red);
-            Restart();
+            ConsoleOut($"CONNECTION-ERROR>{e.Error.Message}", ConsoleColor.Red);
+
         }
 
         private void Client_OnError(object sender, OnErrorEventArgs e)
         {
-            ConsoleOut($"ERROR>{e.Exception.Message}", true, ConsoleColor.Red);
-            Restart();
+            ConsoleOut($"ERROR>{e.Exception.Message}", ConsoleColor.Red);
+
         }
 
         private void Client_OnDisconnect(object sender, OnDisconnectedEventArgs e)
         {
-            ConsoleOut($"BOT>DISCONNECTED", true, ConsoleColor.Red);
-            Restart();
+            ConsoleOut($"BOT>DISCONNECTED", ConsoleColor.Red);
+
         }
 
         private void Client_OnReconnected(object sender, OnReconnectedEventArgs e)
         {
-            ConsoleOut($"BOT>RECONNECTED", true, ConsoleColor.Red);
+            ConsoleOut($"BOT>RECONNECTED", ConsoleColor.Red);
         }
 
         #endregion Bot_On
-
-        #region Threading
-
-        private static void OnMessage(object chatMessage)
-        {
-        }
-
-        #endregion Threading
-
-        #region Timer
-
-        private static void InitializeTimers()
-        {
-            Timers.CreateTimers();
-            AddTimerFunction();
-            StartTimers();
-        }
-
-        private static void StartTimers()
-        {
-            ListTimer.ForEach(t => t.Start());
-        }
-
-        private static void StopTimers()
-        {
-            ListTimer.ForEach(t => t.Stop());
-        }
-
-        private static void AddTimerFunction()
-        {
-            Timers.GetTimer(1000).Elapsed += OnTimer1000;
-            Timers.GetTimer(30000).Elapsed += OnTimer30000;
-            Timers.GetTimer(new Day(10).Milliseconds).Elapsed += OnTimer10Days;
-        }
-
-        private static void OnTimer1000(object sender, Timers::ElapsedEventArgs e)
-        {
-            TimerFunctions.CheckForTimedReminders(_apu);
-        }
-
-        private static void OnTimer30000(object sender, Timers::ElapsedEventArgs e)
-        {
-            TimerFunctions.BanSecretChatUsers(_apu);
-            TimerFunctions.SetConsoleTitle(_apu);
-        }
-
-        private static void OnTimer10Days(object sender, Timers::ElapsedEventArgs e)
-        {
-            TimerFunctions.TwitchApiRefreshAccessToken();
-        }
-
-        #endregion Timer
     }
-}
+ }   

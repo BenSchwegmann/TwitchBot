@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TwitchLib.Client.Models;
+using ApuDoingStuff.Commands;
+using ApuDoingStuff.Twitch;
 
-namespace Bot
+namespace ApuDoingStuff.Commands.CommandClasses
 {
     public static class Ping
     {
-        if()
+        public static void Handle(TwitchBot twitchBot,ChatMessage chatMessage)
+        {
+            twitchBot.Send(chatMessage.Channel, $"ApuSpin PONG! {twitchBot.GetSystemInfo()}");
+
+        }
+            
     }
 }
