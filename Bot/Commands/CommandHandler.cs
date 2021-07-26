@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ApuDoingStuff.Twitch;
 using HLE.Strings;
 using TwitchLib.Client.Models;
+using TwitchLib.Api;
 
 namespace ApuDoingStuff.Commands
 {

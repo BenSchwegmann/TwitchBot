@@ -15,6 +15,8 @@ namespace ApuDoingStuff.Messages
         {
             CommandHandler.Handle(twitchBot, chatMessage);
             MessageCommands.Laurin(twitchBot, chatMessage);
+            MessageCommands.ApuSquats(twitchBot, chatMessage);
+            MessageCommands.Ronic(twitchBot, chatMessage);
         } 
     }
 }

@@ -101,7 +101,7 @@ namespace ApuDoingStuff.Twitch
 
         public string GetSystemInfo()
         {
-            return $"Uptime: {Runtime} ApuSpin Memory usage: {GetMemoryUsage()}MB ApuSpin Executed commands: {CommandCount}";
+            return $"Uptime: {Runtime} ApuSpin Memory usage: {GetMemoryUsage()}MB ApuSpin";
         }
 
         private static double GetMemoryUsage()

@@ -12,7 +12,7 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public static void Handle (TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            twitchBot.Send(chatMessage.Channel, $"ApuSpin {chatMessage.DisplayName}, your color is: {chatMessage.ColorHex}");
+            twitchBot.Send(chatMessage.Channel, $"Apu {chatMessage.DisplayName}, your color is: {chatMessage.ColorHex}");
         }
     }
 }
