@@ -14,7 +14,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
       <b> Description </b>
     </td>
     <td>
-      <b> Permissions needed </b>
+      <b> Needed permisson </b>
     </td>
   </thead>
   <thead>
