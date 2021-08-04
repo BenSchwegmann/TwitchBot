@@ -30,6 +30,17 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
   </thead>
   <thead>
     <td>
+      commands
+    </td>
+    <td>
+      Directs you to this page.
+    </td>
+    <td>
+      -
+    </td>
+  </thead>
+  <thead>
+    <td>
       color
     </td>
     <td>
@@ -38,5 +49,6 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
     <td>
       -
     </td>
+  </thead>
     
 
