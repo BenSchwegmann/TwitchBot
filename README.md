@@ -44,7 +44,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
       color
     </td>
     <td>
-      Returns the HEX Color Code and the RGBA Color Space of your twitch account.
+      Returns the HEX Color Code and the RGBA Color Space of your twitch name.
     </td>
     <td>
       -
