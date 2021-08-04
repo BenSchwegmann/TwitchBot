@@ -19,7 +19,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
   </thead>
   <thead>
     <td>
-      • ping 
+      ping 
     </td>
     <td>
       Checks if the bot is online. Also gives back the runtime!
@@ -30,7 +30,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
   </thead>
   <thead>
     <td>
-      • commands
+      commands
     </td>
     <td>
       Directs you to this page.
@@ -41,7 +41,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
   </thead>
   <thead>
     <td>
-      • color
+      color
     </td>
     <td>
       Returns the HEX Color Code and the RGBA Color Space of your twitch name.
