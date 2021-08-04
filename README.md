@@ -1,4 +1,4 @@
-# **_ApuDoingStuff_** 
+# **ApuDoingStuff** 
 If you have any suggestions for the bot, please whisper the [bot owner](https://twitch.tv/benASTRO) or write it into the [bots chat](https://twitch.tv/ApuDoingStuff/chat).
 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c1b46cfb-6bd0-48a7-8bdf-db288daa35f2-profile_image-300x300.png" alt="error">
 ## Here you can find a list of all commands:
