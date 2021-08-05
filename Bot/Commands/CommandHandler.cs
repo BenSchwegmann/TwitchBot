@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ApuDoingStuff.Twitch;
+﻿using ApuDoingStuff.Twitch;
 using HLE.Strings;
+using System;
+using System.Linq;
 using TwitchLib.Client.Models;
-using TwitchLib.Api;
 
 namespace ApuDoingStuff.Commands
 {

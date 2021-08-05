@@ -1,14 +1,10 @@
-﻿using HLE.Time;
-using System;
-using System.Collections.Generic;
+﻿using ApuDoingStuff.Commands;
+using HLE.Time;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ApuDoingStuff.Commands;
 
 namespace ApuDoingStuff.Twitch
 {
-    class BotAction
+    internal class BotAction
     {
         public static bool IsOnCooldown(string username, CommandType type)
         {

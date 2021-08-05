@@ -1,10 +1,9 @@
-﻿using HLE.Numbers;
-using HLE.Time;
+﻿using ApuDoingStuff.Messages;
+using ApuDoingStuff.Properties;
+using HLE.Numbers;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Diagnostics;
-using System.Threading;
 using TwitchLib.Client;
 using TwitchLib.Client.Enums;
 using TwitchLib.Client.Events;
@@ -13,15 +12,8 @@ using TwitchLib.Communication.Clients;
 using TwitchLib.Communication.Enums;
 using TwitchLib.Communication.Events;
 using TwitchLib.Communication.Models;
-using TwitchLib.Api.Core.HttpCallHandlers;
-using static HLE.Time.TimeHelper;
-using Timers = System.Timers;
-using ApuDoingStuff.Properties;
 using static ApuDoingStuff.Program;
-using ApuDoingStuff;
-using ApuDoingStuff.Commands;
-using ApuDoingStuff.Messages;
-using System.Linq;
+using static HLE.Time.TimeHelper;
 
 
 namespace ApuDoingStuff.Twitch
@@ -184,4 +176,4 @@ namespace ApuDoingStuff.Twitch
         #endregion Bot_On
 
     }
- }   
+}

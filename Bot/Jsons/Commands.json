@@ -23,13 +23,26 @@
   ],
   "MessageCommands": [
     {
-      "CommandName": "Laurin",
+      "MessageName": "laurin",
       "Cooldown": 50000
     },
     {
-      "CommandName": "Ronic",
+      "MessageName": "ronic",
       "Cooldown": 50000
+    },
+    {
+      "MessageName": "jann",
+      "Cooldown": 50000
+    },
+    {
+      "MessageName": "bowliy",
+      "Cooldown": 50000
+    },
+    {
+      "MessageName": "apusquats",
+      "Cooldown": 10000
     }
+
 
   ]
   
