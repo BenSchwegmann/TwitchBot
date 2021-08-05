@@ -3,7 +3,7 @@ using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Commands.CommandClasses
 {
-    internal class Commands
+    public static class Commands
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
