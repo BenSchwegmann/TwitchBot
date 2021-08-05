@@ -1,10 +1,6 @@
-﻿using System;
+﻿using ApuDoingStuff.Properties;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ApuDoingStuff.Properties;
-using ApuDoingStuff.Commands;
 
 namespace ApuDoingStuff.Twitch
 {

@@ -1,5 +1,5 @@
-﻿using HLE.HttpRequests;
-using ApuDoingStuff.Properties;
+﻿using ApuDoingStuff.Properties;
+using HLE.HttpRequests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using TwitchLib.Api.V5.Models.Channels;
 
 namespace ApuDoingStuff.Twitch
 {
-    class TwitchAPI
+    internal class TwitchAPI
     {
         private static readonly TwitchLib.Api.TwitchAPI _api = new();
 
