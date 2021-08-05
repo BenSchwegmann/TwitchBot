@@ -1,0 +1,39 @@
+{
+  "Commands": [
+    {
+      "CommandName": "ping",
+      "Description": "Checks if the bot is online. Also gives back the runtime!",
+      "NeededPermisson": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "commands",
+      "Description": "Directs you to this page.",
+      "NeededPermisson": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "color",
+      "Description": "Returns the HEX Color Code and the RGBA Color Space of your twitch name.",
+      "NeededPermisson": 0,
+      "Cooldown": 30000
+    }
+
+
+  ],
+  "MessageCommands": [
+    {
+      "CommandName": "Laurin",
+      "Cooldown": 50000
+    },
+    {
+      "CommandName": "Ronic",
+      "Cooldown": 50000
+    }
+
+  ]
+  
+
+
+
+}

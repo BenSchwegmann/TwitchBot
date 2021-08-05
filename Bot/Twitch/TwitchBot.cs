@@ -21,6 +21,8 @@ using static ApuDoingStuff.Program;
 using ApuDoingStuff;
 using ApuDoingStuff.Commands;
 using ApuDoingStuff.Messages;
+using System.Linq;
+
 
 namespace ApuDoingStuff.Twitch
 {
@@ -39,6 +41,11 @@ namespace ApuDoingStuff.Twitch
         private static TwitchBot _apu;
 
         public DottedNumber CommandCount { get; set; } = 1;
+
+        public static readonly List<Cooldown> Cooldowns = new();
+        public static readonly List<MessageCooldown> MessageCooldowns = new();
+
+
 
         public string Runtime => ConvertUnixTimeToTimeStamp(_runtime);
 
@@ -102,6 +109,11 @@ namespace ApuDoingStuff.Twitch
         public string GetSystemInfo()
         {
             return $"Uptime: {Runtime} ApuSpin Memory usage: {GetMemoryUsage()}MB ApuSpin";
+        }
+
+        public string GetRuntime()
+        {
+            return $"(Uptime: {Runtime})";
         }
 
         private static double GetMemoryUsage()
@@ -170,5 +182,6 @@ namespace ApuDoingStuff.Twitch
         }
 
         #endregion Bot_On
+
     }
  }   

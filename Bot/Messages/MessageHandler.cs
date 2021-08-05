@@ -17,6 +17,7 @@ namespace ApuDoingStuff.Messages
             MessageCommands.Laurin(twitchBot, chatMessage);
             MessageCommands.ApuSquats(twitchBot, chatMessage);
             MessageCommands.Ronic(twitchBot, chatMessage);
+            MessageCommands.Bowliy(twitchBot, chatMessage);
         } 
     }
 }

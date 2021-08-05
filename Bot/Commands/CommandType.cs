@@ -10,10 +10,17 @@ namespace ApuDoingStuff.Commands
     {
         Ping,
         Color,
+        Commands,
 
 
 
 
+    }
+    
+    public enum MessageType
+    {
+        Laurin,
+        Ronic,
     }
 
 }

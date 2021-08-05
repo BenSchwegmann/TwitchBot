@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ApuDoingStuff.Twitch;
 using TwitchLib.Client.Models;
+using ApuDoingStuff.Commands;
 
 namespace ApuDoingStuff.Messages
 {
@@ -15,7 +16,10 @@ namespace ApuDoingStuff.Messages
         {
             if (chatMessage.Username == "lauriin")
             {
+                BotAction.AddUserToMessageCooldownDictionary(chatMessage.Username, MessageType.Laurin);
                 twitchBot.Send(chatMessage.Channel, "Laurin hat nen kleinen Schniedel AlienPls");
+                BotAction.AddMessageCooldown(chatMessage.Username, MessageType.Laurin);
+
             }
         }
 
@@ -32,6 +36,14 @@ namespace ApuDoingStuff.Messages
             if (chatMessage.Username == "ronic76")
             {
                 twitchBot.Send(chatMessage.Channel, "SHEEEESH sheeeeeeeeeesh 🔔 ");
+            }
+        }
+
+        public static void Bowliy(TwitchBot twitchBot, ChatMessage chatMessage)
+        {
+            if (chatMessage.Username == "bowliy")
+            {
+                twitchBot.Send(chatMessage.Channel, "bowliy Bowliy BOWLIY ");
             }
         }
     }
