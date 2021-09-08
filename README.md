@@ -13,9 +13,6 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
     <td>
       <b> Description </b>
     </td>
-    <td>
-      <b> Needed permisson </b>
-    </td>
   </thead>
   <thead>
     <td>
@@ -23,9 +20,6 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
     </td>
     <td>
       Checks if the bot is online. Also gives back the runtime!
-    </td>
-    <td>
-      -
     </td>
   </thead>
   <thead>
@@ -35,9 +29,6 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
     <td>
       Directs you to this page.
     </td>
-    <td>
-      -
-    </td>
   </thead>
   <thead>
     <td>
@@ -46,9 +37,21 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
     <td>
       Returns the HEX Color Code and the RGBA Color Space of your twitch name.
     </td>
+  </thead>
+  <thead>
     <td>
-      -
+      BanUser
+    </td>
+    <td>
+      Bans the given user (eg.: "?BanUser forsen"). Can be turned of with "?set banuser 0", by a moderator or the broadcaster.
     </td>
   </thead>
-    
+  <thead>
+    <td>
+      Dice
+    </td>
+    <td>
+      With this command you can earn Points from 1-6, like a dice, every hour. You can also get pinged when you can roll your next dice.
+    </td>
+  </thead>
 
