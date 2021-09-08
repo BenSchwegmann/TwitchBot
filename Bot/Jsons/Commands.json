@@ -3,20 +3,80 @@
     {
       "CommandName": "ping",
       "Description": "Checks if the bot is online. Also gives back the runtime!",
-      "NeededPermisson": 0,
+      "NeededPermission": 0,
       "Cooldown": 30000
     },
     {
       "CommandName": "commands",
       "Description": "Directs you to this page.",
-      "NeededPermisson": 0,
+      "NeededPermission": 0,
       "Cooldown": 30000
     },
     {
       "CommandName": "color",
       "Description": "Returns the HEX Color Code and the RGBA Color Space of your twitch name.",
-      "NeededPermisson": 0,
+      "NeededPermission": 0,
       "Cooldown": 30000
+    },
+    {
+      "CommandName": "banuser",
+      "Description": "ok",
+      "NeededPermission": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "set",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
+    },
+    {
+      "CommandName": "racc",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "bryan",
+      "Description": "-",
+      "NeededPermisson": 0,
+      "Cooldown": 20000
+    },
+    {
+      "CommandName": "join",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
+    },
+    {
+      "CommandName": "leave",
+      "Description": "The bot will leave the channel",
+      "NeededPermission": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "dice",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 3600000
+    },
+    {
+      "CommandName": "points",
+      "Cooldown": 30000,
+      "Description": "-",
+      "NeededPermission": 0
+    },
+    {
+      "CommandName": "dicefight",
+      "Desciption": "-",
+      "NeededPermission": 0,
+      "Cooldown": 40000
+    },
+    {
+      "CommandName": "fight",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 40000
     }
 
 
@@ -24,22 +84,26 @@
   "MessageCommands": [
     {
       "MessageName": "laurin",
-      "Cooldown": 50000
+      "Cooldown": 120000
     },
     {
       "MessageName": "ronic",
-      "Cooldown": 50000
+      "Cooldown": 120000
     },
     {
       "MessageName": "jann",
-      "Cooldown": 50000
+      "Cooldown": 120000
     },
     {
       "MessageName": "bowliy",
-      "Cooldown": 50000
+      "Cooldown": 120000
     },
     {
       "MessageName": "apusquats",
+      "Cooldown": 10000
+    },
+    {
+      "MessageName": "habibiteatime",
       "Cooldown": 10000
     }
 

@@ -1,9 +1,11 @@
-﻿using ApuDoingStuff.Messages;
+﻿using ApuDoingStuff.Database.Models;
+using ApuDoingStuff.Messages;
 using ApuDoingStuff.Properties;
 using HLE.Numbers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using TwitchLib.Client;
 using TwitchLib.Client.Enums;
 using TwitchLib.Client.Events;
@@ -36,6 +38,8 @@ namespace ApuDoingStuff.Twitch
 
         public static readonly List<Cooldown> Cooldowns = new();
         public static readonly List<MessageCooldown> MessageCooldowns = new();
+        public static readonly Dictionary<string, string> DiceTimer = new();
+
 
 
 
@@ -105,13 +109,23 @@ namespace ApuDoingStuff.Twitch
 
         public string GetRuntime()
         {
-            return $"(Uptime: {Runtime})";
+            return $"Uptime: [{Runtime}]";
         }
 
         private static double GetMemoryUsage()
         {
             return Math.Truncate(Process.GetCurrentProcess().PrivateMemorySize64 / Math.Pow(10, 6) * 100) / 100;
         }
+
+        public string GetChannelInfo()
+        {
+            BotdbContext database = new();
+            return $"The bot is currently in {database.Channels.Max(u => u.Id)} channels";
+
+        }
+
+
+
 
         #endregion SystemInfo
 
@@ -124,12 +138,16 @@ namespace ApuDoingStuff.Twitch
 
         private void Client_OnConnected(object sender, OnConnectedArgs e)
         {
-            ConsoleOut("BOT>CONNECTED", ConsoleColor.Red);
+            ConsoleOut("BOT>CONNECTED", ConsoleColor.Green);
         }
 
         private void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
         {
-            ConsoleOut($"BOT>Joined channel: {e.Channel}", fontColor: ConsoleColor.Red);
+            ConsoleOut($"BOT>Joined channel: {e.Channel}", fontColor: ConsoleColor.Green);
+            if (e.Channel == "apudoingstuff")
+            {
+                Send(channel: "ApuDoingStuff", message: "/me MrDestructoid BOT ONLINE");
+            }
         }
 
         private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
@@ -141,7 +159,7 @@ namespace ApuDoingStuff.Twitch
 
         private void Client_OnMessageSent(object sender, OnMessageSentArgs e)
         {
-            ConsoleOut($"#{e.SentMessage.Channel}>{Resources.TwitchChannel}: {e.SentMessage.Message}", fontColor: ConsoleColor.Green);
+            ConsoleOut($"#{e.SentMessage.Channel} > : {e.SentMessage.Message}", fontColor: ConsoleColor.Green);
         }
 
         private void Client_OnWhisperReceived(object sender, OnWhisperReceivedArgs e)
@@ -175,5 +193,14 @@ namespace ApuDoingStuff.Twitch
 
         #endregion Bot_On
 
+        public static void SendDicePing(TwitchBot twitchBot, string channel, string username)
+        {
+            BotdbContext database = new();
+
+            if (database.Dicegamedbs.FirstOrDefault(d => d.PingMe == true).UserName == username)
+            {
+                twitchBot.Send(channel, $"/me APU / {HLE.Emojis.Emoji.Bell} @{username} you can roll your next dice!");
+            }
+        }
     }
 }

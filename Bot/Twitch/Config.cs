@@ -1,4 +1,4 @@
-﻿using ApuDoingStuff.Properties;
+﻿using ApuDoingStuff.Database.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +8,9 @@ namespace ApuDoingStuff.Twitch
     {
         public static List<string> GetChannels()
         {
-            return Resources.TwitchChannel.Split().ToList();
+            BotdbContext database = new();
+            List<string> channelnames = database.Channels.Select(d => d.Channel1).ToList();
+            return channelnames;
         }
 
     }

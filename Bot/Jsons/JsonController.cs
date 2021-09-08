@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace ApuDoingStuff.Jsons
 {
-    public class JsonController
+    public static class JsonController
     {
         public static CommandList CommandList { get; private set; }
         public static void LoadData()

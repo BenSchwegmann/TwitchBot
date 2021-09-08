@@ -2,16 +2,19 @@
 using ApuDoingStuff.Twitch;
 using System;
 
-
 namespace ApuDoingStuff
 {
     internal class Program
     {
+
         private static void Main(string[] args)
         {
             JsonController.LoadData();
+            TwitchAPI.Configure();
             new TwitchBot().SetBot();
             Console.ReadLine();
+
+
 
 
         }

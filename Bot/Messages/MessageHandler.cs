@@ -14,6 +14,7 @@ namespace ApuDoingStuff.Messages
             MessageCommands.Ronic(twitchBot, chatMessage);
             MessageCommands.Bowliy(twitchBot, chatMessage);
             MessageCommands.Jann(twitchBot, chatMessage);
+            MessageCommands.HabibiTeaTime(twitchBot, chatMessage);
         }
     }
 }
