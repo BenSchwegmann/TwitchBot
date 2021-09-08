@@ -5,11 +5,26 @@
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>ApuDoingStuff</AssemblyName>
     <RootNamespace>ApuDoingStuff</RootNamespace>
+    <StartupObject>ApuDoingStuff.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HLE" Version="1.1.0.2" />
+    <Content Remove="C:\Users\bensc\.nuget\packages\mysql.data.entityframework\8.0.25\contentFiles\any\netstandard2.1\app.config.transform" />
+    <Content Remove="C:\Users\bensc\.nuget\packages\mysql.data.entityframework\8.0.25\contentFiles\any\netstandard2.1\web.config.transform" />
+    <Content Remove="C:\Users\bensc\.nuget\packages\mysql.data.entityframework\8.0.26\contentFiles\any\netstandard2.1\app.config.transform" />
+    <Content Remove="C:\Users\bensc\.nuget\packages\mysql.data.entityframework\8.0.26\contentFiles\any\netstandard2.1\web.config.transform" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="HLE" Version="1.2.2" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.25" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="TwitchLib" Version="3.2.0" />
   </ItemGroup>

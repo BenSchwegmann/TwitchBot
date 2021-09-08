@@ -7,7 +7,7 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            twitchBot.Send(chatMessage.Channel, $"/me ApuSpin PONG! {twitchBot.GetRuntime()} ");
+            twitchBot.Send(chatMessage.Channel, $"/me ApuSpin PONG! | {twitchBot.GetRuntime()} | {twitchBot.GetChannelInfo()} |");
 
         }
 
