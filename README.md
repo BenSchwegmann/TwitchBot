@@ -48,6 +48,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
   </thead>
 </table>
   ## Commands for the dice game:
+  
   <table>
     <thead>
     <td>
