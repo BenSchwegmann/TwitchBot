@@ -1,4 +1,5 @@
-﻿using ApuDoingStuff.Database.Models;
+﻿using ApuDoingStuff.Commands.DiceGame;
+using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Messages;
 using ApuDoingStuff.Properties;
 using HLE.Numbers;
@@ -39,6 +40,7 @@ namespace ApuDoingStuff.Twitch
         public static readonly List<Cooldown> Cooldowns = new();
         public static readonly List<MessageCooldown> MessageCooldowns = new();
         public static readonly Dictionary<string, string> DiceTimer = new();
+        public static readonly List<FightAccept> FightAccepts = new();
 
 
 

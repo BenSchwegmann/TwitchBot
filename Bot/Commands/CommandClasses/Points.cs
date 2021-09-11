@@ -10,7 +10,14 @@ namespace ApuDoingStuff.Commands.CommandClasses
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
             BotdbContext database = new();
-            twitchBot.Send(chatMessage.Channel, $"/me APU your current points are: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points}");
+            if (chatMessage.Message.Split().Length == 1)
+            {
+                twitchBot.Send(chatMessage.Channel, $"/me APU your current points are: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points}");
+            }
+            else
+            {
+                twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Message.Split()[1]} currents points: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Message.Split()[1]).Points}");
+            }
         }
     }
 }

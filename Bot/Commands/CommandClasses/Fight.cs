@@ -1,6 +1,9 @@
-﻿using ApuDoingStuff.Commands.DiceGame;
+﻿using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Twitch;
+using HLE.Collections;
+using HLE.Emojis;
 using HLE.Strings;
+using System.Linq;
 using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Commands.CommandClasses
@@ -10,15 +13,51 @@ namespace ApuDoingStuff.Commands.CommandClasses
 
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            FightAccept aFight = new(true);
-            if (chatMessage.Message.IsMatch("?fight accept"))
+
+            if (chatMessage.Message.IsMatch("^?fight accept") && TwitchBot.FightAccepts.Any(d => d.Opponent == chatMessage.Username))
             {
-                aFight.Accepted = true;
+                TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username).Accepted = true;
+                BotdbContext database = new();
+                string challenger = TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username).Challenger;
+                int points = TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username).Points;
+                int winnerPoints = points + points;
+
+                string[] opponents = { challenger, chatMessage.Username };
+                string winner = opponents.Random();
+                database.Dicegamedbs.FirstOrDefault(d => d.UserName == challenger).Points -= points;
+                database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points -= points;
+                database.Dicegamedbs.FirstOrDefault(d => d.UserName == winner).Points += winnerPoints;
+                database.SaveChanges();
+                twitchBot.Send(chatMessage.Channel, $"/me APU {Emoji.ConfettiBall} congratulations @{winner} you just won {winnerPoints} points!");
+                System.Console.WriteLine(challenger);
+                if (winner == challenger)
+                {
+                    if (points == 1)
+                    {
+                        twitchBot.Send(chatMessage.Channel, $"/me APU unlucky i guess @{chatMessage.Username}. You lost {points} point :(");
+                    }
+                    else
+                    {
+                        twitchBot.Send(chatMessage.Channel, $"/me APU unlucky i guess @{chatMessage.Username}. You lost {points} points :(");
+                    }
+                }
+                else if (winner == chatMessage.Username)
+                {
+                    if (points == 1)
+                    {
+                        twitchBot.Send(chatMessage.Channel, $"/me APU unlucky i guess @{challenger}. You lost {points} point :(");
+                    }
+                    else
+                    {
+                        twitchBot.Send(chatMessage.Channel, $"/me APU unlucky i guess @{challenger}. You lost {points} points :(");
+                    }
+                }
+                TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username));
             }
 
-            if (chatMessage.Message.IsMatch("?fight decline"))
+            if (chatMessage.Message.IsMatch("^?fight decline"))
             {
-                aFight.Accepted = false;
+                TwitchBot.FightAccepts.FirstOrDefault(d => d.Accepted = false);
             }
         }
     }
