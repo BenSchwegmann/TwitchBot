@@ -8,7 +8,6 @@
         BanUser,
         Set,
         Racc,
-        Bryan,
         Join,
         Leave,
         Dice,

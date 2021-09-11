@@ -37,12 +37,6 @@
       "Cooldown": 30000
     },
     {
-      "CommandName": "bryan",
-      "Description": "-",
-      "NeededPermisson": 0,
-      "Cooldown": 20000
-    },
-    {
       "CommandName": "join",
       "Description": "-",
       "NeededPermission": 0,
