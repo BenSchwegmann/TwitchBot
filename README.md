@@ -46,12 +46,45 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
       Bans the given user (eg.: "?BanUser forsen"). Can be turned of with "?set banuser 0" by a moderator or the broadcaster.
     </td>
   </thead>
+  
+  
+  <table>
+    <thead>
+    <td>
+      <b> Commands </b>
+    </td>
+    <td>
+      <b> Description </b>
+    </td>
+  </thead>
   <thead>
     <td>
       Dice
     </td>
     <td>
-      With this command you can collect points from 1-6 every hour. You can also get a ping when you can roll your next dice. If you want to turn the ping of type "?set pingme 0"
+      With this command you can collect points from 1-6 every hour.
     </td>
   </thead>
+  <thead>
+    <td>
+      Points
+    </td>
+    <td>
+      Checks your current points or of someone else.
+    </td>
+  <thead>
+    <td>
+      PingMe
+    </td>
+    <td>
+      You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
+    </td>
+  <thead>
+    <td>
+      DiceFight
+    </td>
+    <td>
+      If you want to earn or lose some points you can fight an user (?DiceFight [Username] [Points]).
+    </td>
+      
 
