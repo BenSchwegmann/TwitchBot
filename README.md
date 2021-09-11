@@ -47,6 +47,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
       Bans the given user (eg.: "?BanUser forsen"). Can be turned of with "?set banuser 0" by a moderator or the broadcaster.
     </td>
   </thead>
+</table>
 
   ## Commands for the dice game:
   
