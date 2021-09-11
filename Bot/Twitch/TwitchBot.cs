@@ -17,6 +17,7 @@ using TwitchLib.Communication.Events;
 using TwitchLib.Communication.Models;
 using static ApuDoingStuff.Program;
 using static HLE.Time.TimeHelper;
+using HLE.Emojis;
 
 
 namespace ApuDoingStuff.Twitch
@@ -199,9 +200,9 @@ namespace ApuDoingStuff.Twitch
         {
             BotdbContext database = new();
 
-            if (database.Dicegamedbs.FirstOrDefault(d => d.PingMe == true).UserName == username)
+            if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).PingMe == true)
             {
-                twitchBot.Send(channel, $"/me APU / {HLE.Emojis.Emoji.Bell} @{username} you can roll your next dice!");
+                twitchBot.Send(channel, $"/me APU / {Emoji.Bell} @{username} you can roll your next dice!");
             }
         }
     }
