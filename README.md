@@ -51,7 +51,7 @@ If you have any suggestions for the bot, please whisper the [bot owner](https://
       Dice
     </td>
     <td>
-      With this command you can collect points from 1-6 every hour. You can also get a ping when you can roll your next dice.
+      With this command you can collect points from 1-6 every hour. You can also get a ping when you can roll your next dice. If you want to turn the ping of type "?set pingme 0"
     </td>
   </thead>
 
