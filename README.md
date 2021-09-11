@@ -48,6 +48,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     </td>
   </thead>
   </table>
+  
 ## Commands for the dice game:
 
 <table>
