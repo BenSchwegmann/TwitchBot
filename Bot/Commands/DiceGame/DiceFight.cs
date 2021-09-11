@@ -1,7 +1,5 @@
 ﻿using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Twitch;
-using HLE.Collections;
-using HLE.Emojis;
 using System;
 using System.Linq;
 using TwitchLib.Client.Models;

@@ -27,8 +27,10 @@ namespace ApuDoingStuff.Commands.CommandClasses
             }
             else
             {
-                twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you got an {randDice}");
+                twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you got a {randDice}");
                 _ = database.Dicegamedbs.Add(new Dicegamedb { UserName = chatMessage.Username, Points = randDice });
+                database.SaveChanges();
+                database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).PingMe = true;
                 database.SaveChanges();
                 DiceSaveTimer saveTimer = new(chatMessage.Channel, chatMessage.Username, twitchBot);
             }
