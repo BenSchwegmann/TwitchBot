@@ -47,8 +47,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Bans the given user (eg.: "?BanUser forsen"). Can be turned of with "?set banuser 0" by a moderator or the broadcaster.
     </td>
   </thead>
-</table>
-
+  </table>
 ## Commands for the dice game:
 
 <table>
