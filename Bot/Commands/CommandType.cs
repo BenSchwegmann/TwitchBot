@@ -14,15 +14,11 @@
         Points,
         DiceFight,
         Fight,
+        GitHub,
     }
 
     public enum MessageType
     {
-        Laurin,
-        Ronic,
         ApuSquats,
-        Jann,
-        Bowliy,
-        HabibiTeaTime,
     }
 }

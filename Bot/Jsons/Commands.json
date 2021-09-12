@@ -71,37 +71,21 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 40000
+    },
+    {
+      "CommandName": "github",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 30000
     }
 
 
   ],
   "MessageCommands": [
     {
-      "MessageName": "laurin",
-      "Cooldown": 120000
-    },
-    {
-      "MessageName": "ronic",
-      "Cooldown": 120000
-    },
-    {
-      "MessageName": "jann",
-      "Cooldown": 120000
-    },
-    {
-      "MessageName": "bowliy",
-      "Cooldown": 120000
-    },
-    {
       "MessageName": "apusquats",
       "Cooldown": 10000
-    },
-    {
-      "MessageName": "habibiteatime",
-      "Cooldown": 10000
     }
-
-
   ]
   
 
