@@ -53,41 +53,41 @@ If you have any suggestions for the bot or want the bot in your channel, please 
 
 <table>
   <thead>
-    <tr>
+    <td>
       <b> Commands </b>
-    </tr>
-    <tr>
+    </td>
+    <td>
       <b> Description </b>
-    </tr>
+    </td>
   </thead>
   <thead>
-    <tr>
+    <td>
       Dice
-    </tr>
-    <tr>
+    </td>
+    <td>
       With this command you can collect points from 1-6 every hour.
-    </tr>
+    </td>
   </thead>
   <thead>
-    <tr>
+    <td>
       Points
-    </tr>
-    <tr>
+    </td>
+    <td>
       Checks your current points or of someone else.
-    </tr>
+    </td>
   <thead>
-    <tr>
+    <td>
       PingMe
-    </tr>
-    <tr>
+    </td>
+    <td>
       You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
-    </tr>
+    </td>
   <thead>
-    <tr>
+    <td>
       DiceFight
-    </tr>
-    <tr>
+    </td>
+    <td>
       If you want to earn or lose some points you can fight an user (?DiceFight [Username] [Points]).
-    </tr>
+    </td>
       
 
