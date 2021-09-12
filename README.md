@@ -79,7 +79,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     <tr>
       PingMe
     </tr>
-    <td>
+    <tr>
       You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
     </tr>
   <thead>
