@@ -15,31 +15,38 @@ namespace ApuDoingStuff.Commands.CommandClasses
 
             if (chatMessage.Message.Split().Length >= 3)
             {
-                if (chatMessage.Message.Split()[1].ToLower() == chatMessage.Username)
+                if (database.Dicegamedbs.Any(d => d.UserName == chatMessage.Message.Split()[1]))
                 {
-                    twitchBot.Send(chatMessage.Channel, $"/me APU you can't fight yourself @{chatMessage.Username}");
-                }
-                else
-                {
-                    int setPoints = Convert.ToInt32(chatMessage.Message.Split()[2]);
-                    int winnerPoints = setPoints + setPoints;
-                    string enemy = chatMessage.Message.Split()[1].ToLower();
-                    if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points >= setPoints)
+                    if (chatMessage.Message.Split()[1].ToLower() == chatMessage.Username)
                     {
-                        if (database.Dicegamedbs.Any(d => d.UserName == enemy) && database.Dicegamedbs.FirstOrDefault(d => d.UserName == enemy).Points >= setPoints)
-                        {
-                            twitchBot.Send(chatMessage.Channel, $"/me APU @{enemy}, you were challenged. If you want to accept please type \"?fight accept\" otherwise type \"?fight decline\"");
-                            TwitchBot.FightAccepts.Add(new(enemy, chatMessage.Channel, setPoints, chatMessage.Username));
-                        }
-                        else
-                        {
-                            twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, your opponent has not enough points to compete [current points of @{enemy}: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == enemy).Points}]");
-                        }
+                        twitchBot.Send(chatMessage.Channel, $"/me APU you can't fight yourself @{chatMessage.Username}");
                     }
                     else
                     {
-                        twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you don't have enough points to compete [current points of @{chatMessage.Username}: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points}]");
+                        int setPoints = Convert.ToInt32(chatMessage.Message.Split()[2]);
+                        int winnerPoints = setPoints + setPoints;
+                        string enemy = chatMessage.Message.Split()[1].ToLower();
+                        if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points >= setPoints)
+                        {
+                            if (database.Dicegamedbs.Any(d => d.UserName == enemy) && database.Dicegamedbs.FirstOrDefault(d => d.UserName == enemy).Points >= setPoints)
+                            {
+                                twitchBot.Send(chatMessage.Channel, $"/me APU @{enemy}, you were challenged. If you want to accept please type \"?fight accept\" otherwise type \"?fight decline\"");
+                                TwitchBot.FightAccepts.Add(new(enemy, chatMessage.Channel, setPoints, chatMessage.Username));
+                            }
+                            else
+                            {
+                                twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, your opponent has not enough points to compete [current points of @{enemy}: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == enemy).Points}]");
+                            }
+                        }
+                        else
+                        {
+                            twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you don't have enough points to compete [current points of @{chatMessage.Username}: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points}]");
+                        }
                     }
+                }
+                else
+                {
+                    twitchBot.Send(chatMessage.Channel, $"/me APU it appears that @{chatMessage.Message.Split()[1]} has no points yet. Type \"?Dice\" to earn points.");
                 }
             }
             else

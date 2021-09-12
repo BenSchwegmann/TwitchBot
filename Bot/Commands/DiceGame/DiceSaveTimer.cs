@@ -11,7 +11,7 @@ namespace ApuDoingStuff.Commands.DiceGame
         public TwitchBot TwitchBot { get; }
 
 
-        private const int _timer = 30000;
+        private const int _timer = 3600000;
 
         public DiceSaveTimer(string channel, string username, TwitchBot twitchBot)
         {
