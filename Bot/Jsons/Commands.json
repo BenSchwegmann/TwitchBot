@@ -70,16 +70,50 @@
       "CommandName": "fight",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 40000
+      "Cooldown": 20000
     },
     {
       "CommandName": "github",
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 30000
+    },
+    {
+      "CommandName": "buy",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "shop",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 30000
+    },
+    {
+      "CommandName": "shiba",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
+    },
+    {
+      "CommandName": "duck",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
+    },
+    {
+      "CommandName": "cat",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
+    },
+    {
+      "CommandName": "dog",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
     }
-
-
   ],
   "MessageCommands": [
     {

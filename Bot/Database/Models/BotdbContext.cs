@@ -65,6 +65,10 @@ namespace ApuDoingStuff.Database.Models
 
                 entity.Property(e => e.Points).HasDefaultValueSql("'0'");
 
+                entity.Property(e => e.Rank)
+                    .HasMaxLength(50)
+                    .HasDefaultValueSql("'-'");
+
                 entity.Property(e => e.UserName)
                     .HasMaxLength(50)
                     .HasDefaultValueSql("'0'");

@@ -1,4 +1,6 @@
-﻿using ApuDoingStuff.Twitch;
+﻿using ApuDoingStuff.Database.Models;
+using ApuDoingStuff.Twitch;
+using System.Linq;
 using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Commands.CommandClasses
@@ -7,7 +9,8 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, here you can find all commands: https://benastro.github.io/ApuDoingStuff/");
+            BotdbContext database = new();
+            twitchBot.Send(chatMessage.Channel, $"/me APU [ {database.Dicegamedbs.FirstOrDefault(r => r.UserName == chatMessage.Username).Rank} ] @{chatMessage.Username}, here you can find all commands: https://benastro.github.io/ApuDoingStuff/");
         }
     }
 }

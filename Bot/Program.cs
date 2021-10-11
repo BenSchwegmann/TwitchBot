@@ -13,10 +13,6 @@ namespace ApuDoingStuff
             TwitchAPI.Configure();
             new TwitchBot().SetBot();
             Console.ReadLine();
-
-
-
-
         }
         public static void ConsoleOut(string value, ConsoleColor fontColor = ConsoleColor.Gray)
         {

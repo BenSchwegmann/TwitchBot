@@ -1,9 +1,9 @@
 ﻿using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Properties;
 using ApuDoingStuff.Twitch;
+using HLE.Emojis;
 using System.Linq;
 using TwitchLib.Client.Models;
-using HLE.Emojis;
 
 namespace ApuDoingStuff.Commands.CommandClasses
 {

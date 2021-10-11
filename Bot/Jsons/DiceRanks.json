@@ -1,0 +1,32 @@
+  [
+    {
+      "EmoteNr": 1,
+      "Name": "EleGiggle",
+      "Price": 50
+    },
+    {
+      "EmoteNr": 2,
+      "Name": "ppL",
+      "Price": 100
+    },
+    {
+      "EmoteNr": 3,
+      "Name": "SourPls",
+      "Price": 200
+    },
+    {
+      "EmoteNr": 4,
+      "Name": "AlienDance",
+      "Price": 250
+    },
+    {
+      "EmoteNr": 5,
+      "Name": ":tf:",
+      "Price": 300
+    },
+    {
+      "EmoteNr": 6,
+      "Name": "BasedGod",
+      "Price": 400
+    }
+  ]

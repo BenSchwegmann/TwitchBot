@@ -15,6 +15,12 @@
         DiceFight,
         Fight,
         GitHub,
+        Buy,
+        Shop,
+        Shiba,
+        Duck,
+        Cat,
+        Dog,
     }
 
     public enum MessageType

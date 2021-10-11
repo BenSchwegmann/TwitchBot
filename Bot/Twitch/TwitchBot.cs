@@ -2,6 +2,7 @@
 using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Messages;
 using ApuDoingStuff.Properties;
+using HLE.Emojis;
 using HLE.Numbers;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ using TwitchLib.Communication.Events;
 using TwitchLib.Communication.Models;
 using static ApuDoingStuff.Program;
 using static HLE.Time.TimeHelper;
-using HLE.Emojis;
 
 
 namespace ApuDoingStuff.Twitch
@@ -42,6 +42,7 @@ namespace ApuDoingStuff.Twitch
         public static readonly List<MessageCooldown> MessageCooldowns = new();
         public static readonly Dictionary<string, string> DiceTimer = new();
         public static readonly List<FightAccept> FightAccepts = new();
+        public const int MaxLenght = 500;
 
 
 
@@ -112,7 +113,7 @@ namespace ApuDoingStuff.Twitch
 
         public string GetRuntime()
         {
-            return $"Uptime: [{Runtime}]";
+            return $"Uptime: {Runtime}]";
         }
 
         private static double GetMemoryUsage()
@@ -204,6 +205,11 @@ namespace ApuDoingStuff.Twitch
             {
                 twitchBot.Send(channel, $"/me APU / {Emoji.Bell} @{username} you can roll your next dice!");
             }
+        }
+
+        public static void FightTimerExpired(TwitchBot twitchBot, string channel, string opponent, string challenger)
+        {
+            twitchBot.Send(channel, $"/me APU @{challenger}, your opponent ( @{opponent} ) didn't showed up to the fight :/");
         }
     }
 }
