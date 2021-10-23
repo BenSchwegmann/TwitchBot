@@ -94,7 +94,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Lyrics
     </td>
     <td>
-      Get an genius link to the questioned lyrics [API](/https://some-random-api.ml/lyrics?title=)
+      Get an genius link to the questioned lyrics [API](/https://some-random-api.ml/lyrics?title=) [An Internal Link](/guides/content/editing-an-existing-page)
     </td>
   </thead>
   </table>
