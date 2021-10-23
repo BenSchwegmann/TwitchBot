@@ -54,7 +54,47 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Shiba
     </td>
     <td>
-      Returns an random picture of an shiba. [I'm an inline-style link](https://www.google.com)
+      Returns an random picture of an shiba. [API: http://shibe.online/api/shibes]
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Duck
+    </td>
+    <td>
+      Returns an random picture of an duck. [API: https://random-d.uk/api/random]
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Cat
+    </td>
+    <td>
+      Returns an random picture of an cat and an random fact about them. [API: https://aws.random.cat/meow & https://catfact.ninja/fact]
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Dog
+    </td>
+    <td>
+      Returns an random picture of an dog and an random fact about them. [API: https://random.dog/woof.json & https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1]
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Axolotl
+    </td>
+    <td>
+      Returns an random picture of an axolotl and an random fact about them. [API: https://axoltlapi.herokuapp.com/]
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Lyrics
+    </td>
+    <td>
+      Get an genius link to the questioned lyrics [API: https://some-random-api.ml/lyrics?title=]
     </td>
   </thead>
   </table>
