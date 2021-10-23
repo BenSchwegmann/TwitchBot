@@ -54,7 +54,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Shiba
     </td>
     <td>
-      Returns an random picture of an shiba. [bot owner](https://twitch.tv/benASTRO)
+      Returns an random picture of an shiba. [I'm an inline-style link](https://www.google.com)
     </td>
   </thead>
   </table>
