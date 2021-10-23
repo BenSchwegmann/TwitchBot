@@ -54,7 +54,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Shiba
     </td>
     <td>
-      Returns an random picture of a shiba. [API: http://shibe.online/api/shibes]
+      Returns an random picture of a shiba. [API](http://shibe.online/api/shibes)
     </td>
   </thead>
   <thead>
@@ -86,7 +86,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Axolotl
     </td>
     <td>
-      Returns an random picture of an axolotl and an random fact about them. [API: https://axoltlapi.herokuapp.com/]
+      Returns an random picture of an axolotl and an random fact about them. <a href="https://axoltlapi.herokuapp.com/]">[API]</a>
     </td>
   </thead>
   <thead>
@@ -94,9 +94,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Lyrics
     </td>
     <td>
-      Get an genius link to the questioned lyrics [API](/https://some-random-api.ml/lyrics?title=) 
-<a href="https://some-random-api.ml/lyrics?title=">[API]</a>
-
+      Get an genius link to the questioned lyrics <a href="https://some-random-api.ml/lyrics?title=">[API]</a>
     </td>
   </thead>
   </table>
