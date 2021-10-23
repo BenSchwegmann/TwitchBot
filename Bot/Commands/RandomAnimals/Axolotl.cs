@@ -6,12 +6,12 @@ using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Commands.CommandClasses
 {
-    public class Cat
+    public class Axolotl
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
             BotdbContext database = new();
-            twitchBot.Send(chatMessage.Channel, $"/me APU [ {database.Dicegamedbs.FirstOrDefault(r => r.UserName == chatMessage.Username).Rank} ] @{chatMessage.Username}, {HTTPRequest.RandomCatUrl()} CoolCat");
+            twitchBot.Send(chatMessage.Channel, $"/me APU [ {database.Dicegamedbs.FirstOrDefault(r => r.UserName == chatMessage.Username).Rank} ] @{chatMessage.Username}, {HTTPRequest.RandomAxolotFact()} {HTTPRequest.RandomAxolotlUrl()}");
         }
     }
 }

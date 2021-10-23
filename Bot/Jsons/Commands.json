@@ -113,6 +113,18 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 10000
+    },
+    {
+      "CommandName": "axolotl",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
+    },
+    {
+      "CommandName": "lyrics",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
     }
   ],
   "MessageCommands": [

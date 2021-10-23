@@ -11,7 +11,7 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            if (chatMessage.IsModerator || chatMessage.IsBroadcaster)
+            if (chatMessage.IsModerator || chatMessage.IsBroadcaster || chatMessage.Username == Resources.Owner)
             {
                 twitchBot.TwitchClient.LeaveChannel(chatMessage.Channel);
                 BotdbContext database = new();
@@ -22,15 +22,6 @@ namespace ApuDoingStuff.Commands.CommandClasses
             else
             {
                 twitchBot.Send(chatMessage.Channel, $"/me APU no, i don't think so @{chatMessage.Username} [moderator/broadcaster only]");
-            }
-
-            if (chatMessage.Username == Resources.Owner)
-            {
-                twitchBot.TwitchClient.LeaveChannel(chatMessage.Message.Split()[1]);
-                BotdbContext database = new();
-                database.Channels.Remove(database.Channels.FirstOrDefault(d => d.Channel1 == chatMessage.Message.Split()[1]));
-                database.SaveChanges();
-                twitchBot.Send(channel: "apudoingstuff", $"/me APU the bot left channel: @{chatMessage.Message.Split()[1]}");
             }
         }
     }

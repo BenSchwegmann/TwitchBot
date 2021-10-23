@@ -113,7 +113,7 @@ namespace ApuDoingStuff.Twitch
 
         public string GetRuntime()
         {
-            return $"Uptime: {Runtime}]";
+            return $"Uptime: [{Runtime}]";
         }
 
         private static double GetMemoryUsage()
