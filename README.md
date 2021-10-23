@@ -62,7 +62,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Duck
     </td>
     <td>
-      Returns an random picture of a duck. [API: https://random-d.uk/api/random] <a href="https://random-d.uk/api/random">[API]</a>
+      Returns an random picture of a duck. <a href="https://random-d.uk/api/random">[API]</a>
     </td>
   </thead>
   <thead>
