@@ -54,7 +54,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Shiba
     </td>
     <td>
-      Returns a random picture of a shiba. [API](http://shibe.online/api/shibes)
+      Returns a random picture of a shiba. <a href="http://shibe.online/api/shibes">[API]</a>
     </td>
   </thead>
   <thead>
@@ -62,7 +62,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Duck
     </td>
     <td>
-      Returns an random picture of a duck. [API: https://random-d.uk/api/random]
+      Returns an random picture of a duck. [API: https://random-d.uk/api/random] <a href="https://random-d.uk/api/random">[API]</a>
     </td>
   </thead>
   <thead>
@@ -70,7 +70,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Cat
     </td>
     <td>
-      Returns an random picture of a cat and an random fact about them. [API: https://aws.random.cat/meow & https://catfact.ninja/fact]
+      Returns an random picture of a cat and an random fact about them. <a href="https://aws.random.cat/meow">[API]</a> & <a href="https://catfact.ninja/fact">[API]</a>
     </td>
   </thead>
   <thead>
@@ -86,7 +86,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Axolotl
     </td>
     <td>
-      Returns an random picture of an axolotl and an random fact about them. <a href="https://axoltlapi.herokuapp.com/]">[API]</a>
+      Returns an random picture of an axolotl and an random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
     </td>
   </thead>
   <thead>
