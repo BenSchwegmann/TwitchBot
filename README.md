@@ -70,7 +70,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Cat
     </td>
     <td>
-      Returns an random picture of a cat and an random fact about them. <a href="https://aws.random.cat/meow">[API]</a> & <a href="https://catfact.ninja/fact">[API]</a>
+      Returns an random picture of a cat and a random fact about them. <a href="https://aws.random.cat/meow">[API]</a> & <a href="https://catfact.ninja/fact">[API]</a>
     </td>
   </thead>
   <thead>
@@ -78,7 +78,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Dog
     </td>
     <td>
-      Returns an random picture of a dog and an random fact about them. <a href="https://random.dog/woof.json">[API]</a> & <a href="https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1">[API]</a>
+      Returns an random picture of a dog and a random fact about them. <a href="https://random.dog/woof.json">[API]</a> & <a href="https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1">[API]</a>
     </td>
   </thead>
   <thead>
@@ -86,7 +86,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Axolotl
     </td>
     <td>
-      Returns an random picture of an axolotl and an random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
+      Returns an random picture of an axolotl and a random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
     </td>
   </thead>
   <thead>
