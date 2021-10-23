@@ -54,7 +54,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Shiba
     </td>
     <td>
-      Returns an random picture of an shiba. [API: http://shibe.online/api/shibes]
+      Returns an random picture of a shiba. [API: http://shibe.online/api/shibes]
     </td>
   </thead>
   <thead>
@@ -62,7 +62,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Duck
     </td>
     <td>
-      Returns an random picture of an duck. [API: https://random-d.uk/api/random]
+      Returns an random picture of a duck. [API: https://random-d.uk/api/random]
     </td>
   </thead>
   <thead>
@@ -70,7 +70,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Cat
     </td>
     <td>
-      Returns an random picture of an cat and an random fact about them. [API: https://aws.random.cat/meow & https://catfact.ninja/fact]
+      Returns an random picture of a cat and an random fact about them. [API: https://aws.random.cat/meow & https://catfact.ninja/fact]
     </td>
   </thead>
   <thead>
@@ -78,7 +78,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Dog
     </td>
     <td>
-      Returns an random picture of an dog and an random fact about them. [API: https://random.dog/woof.json & https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1]
+      Returns an random picture of a dog and an random fact about them. [API: https://random.dog/woof.json & https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1]
     </td>
   </thead>
   <thead>
@@ -94,7 +94,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Lyrics
     </td>
     <td>
-      Get an genius link to the questioned lyrics [API: https://some-random-api.ml/lyrics?title=]
+      Get an genius link to the questioned lyrics [API](https://some-random-api.ml/lyrics?title=)
     </td>
   </thead>
   </table>
