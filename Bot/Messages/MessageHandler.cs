@@ -10,6 +10,7 @@ namespace ApuDoingStuff.Messages
         {
             CommandHandler.Handle(twitchBot, chatMessage);
             MessageCommands.ApuSquats(twitchBot, chatMessage);
+            MessageCommands.Alert(twitchBot, chatMessage);
         }
     }
 }
