@@ -54,7 +54,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Shiba
     </td>
     <td>
-      Returns an random picture of a shiba. [API](http://shibe.online/api/shibes)
+      Returns a random picture of a shiba. [API](http://shibe.online/api/shibes)
     </td>
   </thead>
   <thead>
