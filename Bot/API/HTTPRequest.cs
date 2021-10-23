@@ -1,4 +1,5 @@
 ﻿using HLE.HttpRequests;
+using System.Text.Json;
 
 namespace ApuDoingStuff.API
 {
@@ -7,7 +8,10 @@ namespace ApuDoingStuff.API
         private const string _randomShibaUrl = "http://shibe.online/api/shibes";
         private const string _randomDuckUrl = "https://random-d.uk/api/random";
         private const string _randomCatUrl = "https://aws.random.cat/meow";
+        private const string _randomCatFact = "https://catfact.ninja/fact";
         private const string _randomDogUrl = "https://random.dog/woof.json";
+        private const string _randomAxolotlUrl = "https://axoltlapi.herokuapp.com/";
+        private const string _randomDogFact = "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1";
 
         public static string RandomShibaUrl()
         {
@@ -54,6 +58,71 @@ namespace ApuDoingStuff.API
             if (request.ValidJsonData)
             {
                 return request.Data.GetProperty("url").GetString();
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+
+        public static string RandomAxolotlUrl()
+        {
+            HttpGet request = new(_randomAxolotlUrl);
+            if (request.ValidJsonData)
+            {
+                return request.Data.GetProperty("url").GetString();
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+
+        public static string RandomAxolotFact()
+        {
+            HttpGet request = new(_randomAxolotlUrl);
+            if (request.ValidJsonData)
+            {
+                return request.Data.GetProperty("facts").GetString();
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+        public static string RandomDogFact()
+        {
+            HttpGet request = new(_randomDogFact);
+            if (request.ValidJsonData)
+            {
+                return request.Data[0].GetProperty("fact").GetString();
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+
+        public static string RandomCatFact()
+        {
+            HttpGet request = new(_randomCatFact);
+            if (request.ValidJsonData)
+            {
+                return request.Data.GetProperty("fact").GetString();
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+
+        public static string LyricsUrl(string title)
+        {
+            HttpGet request = new($"https://some-random-api.ml/lyrics?title={title}");
+            JsonElement lyricsLink = request.Data.GetProperty("links").GetProperty("genius");
+            if (request.ValidJsonData)
+            {
+                return $"{lyricsLink}";
             }
             else
             {

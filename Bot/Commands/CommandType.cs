@@ -21,10 +21,13 @@
         Duck,
         Cat,
         Dog,
+        Axolotl,
+        Lyrics,
     }
 
     public enum MessageType
     {
         ApuSquats,
+        Alert,
     }
 }
