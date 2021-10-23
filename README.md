@@ -78,7 +78,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Dog
     </td>
     <td>
-      Returns an random picture of a dog and an random fact about them. [API: https://random.dog/woof.json & https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1]
+      Returns an random picture of a dog and an random fact about them. <a href="https://random.dog/woof.json"&"https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1">[API]</a>
     </td>
   </thead>
   <thead>
