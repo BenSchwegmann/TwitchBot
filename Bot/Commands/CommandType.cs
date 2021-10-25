@@ -23,6 +23,7 @@
         Dog,
         Axolotl,
         Lyrics,
+        BigDice,
     }
 
     public enum MessageType

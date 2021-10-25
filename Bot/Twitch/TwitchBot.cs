@@ -207,6 +207,16 @@ namespace ApuDoingStuff.Twitch
             }
         }
 
+        public static void SendBigDicePing(TwitchBot twitchBot, string channel, string username)
+        {
+            BotdbContext database = new();
+
+            if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).PingMe == true)
+            {
+                twitchBot.Send(channel, $"/me APU / {Emoji.Bell} @{username} you can roll a BIG dice! B)");
+            }
+        }
+
         public static void FightTimerExpired(TwitchBot twitchBot, string channel, string opponent, string challenger)
         {
             twitchBot.Send(channel, $"/me APU @{challenger}, your opponent ( @{opponent} ) didn't showed up to the fight :/");

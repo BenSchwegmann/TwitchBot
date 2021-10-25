@@ -125,6 +125,12 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 20000
+    },
+    {
+      "CommandName": "bigdice",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10800000
     }
   ],
   "MessageCommands": [
