@@ -78,8 +78,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Dog
     </td>
     <td>
-      Returns an random picture of a dog and a random fact about them. <a href="https://random.dog/woof.json">[API]</a> & <a href="https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1">[API]</a>
-    </td>
+      Returns an random picture of a dog. <a href="https://random.dog/woof.json">[API]</a>
   </thead>
   <thead>
     <td>
@@ -116,6 +115,14 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     </td>
     <td>
       With this command you can collect points from 1-6 every hour.
+    </td>
+  </thead>
+  thead>
+    <td>
+      BigDice
+    </td>
+    <td>
+      While you can only collect points from 1-6 with the "?Dice" command, with the "?BigDice" you can collect up to 20 points but also lose up to 20 points. The           cooldown is 3 hours.
     </td>
   </thead>
   <thead>
