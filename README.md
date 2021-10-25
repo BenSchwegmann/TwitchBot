@@ -117,7 +117,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       With this command you can collect points from 1-6 every hour.
     </td>
   </thead>
-  thead>
+  <thead>
     <td>
       BigDice
     </td>
