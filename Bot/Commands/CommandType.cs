@@ -24,6 +24,7 @@
         Axolotl,
         Lyrics,
         BigDice,
+        Top,
     }
 
     public enum MessageType

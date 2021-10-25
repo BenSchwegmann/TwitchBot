@@ -131,6 +131,12 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 10800000
+    },
+    {
+      "CommandName": "top",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
     }
   ],
   "MessageCommands": [
