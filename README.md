@@ -49,6 +49,53 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Bans the given user (eg.: "?BanUser forsen"). Can be turned of with "?set banuser 0" by a moderator or the broadcaster.
     </td>
   </thead>
+  <thead>
+    <td>
+      Shiba
+    </td>
+    <td>
+      Returns a random picture of a shiba. <a href="http://shibe.online/api/shibes">[API]</a>
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Duck
+    </td>
+    <td>
+      Returns an random picture of a duck. <a href="https://random-d.uk/api/random">[API]</a>
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Cat
+    </td>
+    <td>
+      Returns an random picture of a cat and a random fact about them. <a href="https://aws.random.cat/meow">[API]</a> & <a href="https://catfact.ninja/fact">[API]</a>
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Dog
+    </td>
+    <td>
+      Returns an random picture of a dog. <a href="https://random.dog/woof.json">[API]</a>
+  </thead>
+  <thead>
+    <td>
+      Axolotl
+    </td>
+    <td>
+      Returns an random picture of an axolotl and a random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Lyrics
+    </td>
+    <td>
+      Get an genius link to the questioned lyrics <a href="https://some-random-api.ml/lyrics?title=">[API]</a>
+    </td>
+  </thead>
   </table>
   
 ## Commands for the dice game:
@@ -68,6 +115,14 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     </td>
     <td>
       With this command you can collect points from 1-6 every hour.
+    </td>
+  </thead>
+  <thead>
+    <td>
+      BigDice
+    </td>
+    <td>
+      While you can only collect points from 1-6 with the "?Dice" command, with the "?BigDice" you can collect up to 20 points but also lose up to 20 points. The           cooldown is 3 hours.
     </td>
   </thead>
   <thead>
