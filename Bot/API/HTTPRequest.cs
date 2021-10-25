@@ -11,7 +11,6 @@ namespace ApuDoingStuff.API
         private const string _randomCatFact = "https://catfact.ninja/fact";
         private const string _randomDogUrl = "https://random.dog/woof.json";
         private const string _randomAxolotlUrl = "https://axoltlapi.herokuapp.com/";
-        private const string _randomDogFact = "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1";
 
         public static string RandomShibaUrl()
         {
@@ -84,18 +83,6 @@ namespace ApuDoingStuff.API
             if (request.ValidJsonData)
             {
                 return request.Data.GetProperty("facts").GetString();
-            }
-            else
-            {
-                return request.Result;
-            }
-        }
-        public static string RandomDogFact()
-        {
-            HttpGet request = new(_randomDogFact);
-            if (request.ValidJsonData)
-            {
-                return request.Data[0].GetProperty("fact").GetString();
             }
             else
             {
