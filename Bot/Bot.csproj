@@ -6,6 +6,7 @@
     <AssemblyName>ApuDoingStuff</AssemblyName>
     <RootNamespace>ApuDoingStuff</RootNamespace>
     <StartupObject>ApuDoingStuff.Program</StartupObject>
+    <ApplicationIcon>ApuDoingStuff.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,8 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ApuDoingStuff.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="HLE" Version="1.2.2" />
+    <PackageReference Include="HLE" Version="1.2.4" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
       <PrivateAssets>all</PrivateAssets>
