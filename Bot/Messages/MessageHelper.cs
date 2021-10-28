@@ -1,6 +1,6 @@
 ﻿using ApuDoingStuff.Commands;
 using ApuDoingStuff.Twitch;
-using HLE.Strings;
+using HLE.Collections;
 using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Messages
