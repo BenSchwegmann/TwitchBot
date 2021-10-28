@@ -1,5 +1,8 @@
 ﻿using ApuDoingStuff.Twitch;
-using System.Timers;
+using HLE.Time;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ApuDoingStuff.Commands.CommandClasses
 {
@@ -7,9 +10,9 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public string Channel { get; }
         public string Username { get; }
-        public Timer SaveTimer { get; }
+        public HTimer SaveTimer { get; }
         public TwitchBot TwitchBot { get; }
-
+        public static List<BigDiceSaveTimer> Timers { get; } = new();
 
         private const int _timer = 10800000;
 
@@ -25,9 +28,10 @@ namespace ApuDoingStuff.Commands.CommandClasses
 
         }
 
-        public void OnTimedEvent(object source, ElapsedEventArgs e)
+        public void OnTimedEvent(object source, EventArgs e)
         {
-            TwitchBot.SendDicePing(TwitchBot, Channel, Username);
+            Timers.Remove(Timers.FirstOrDefault(d => d.Username == Username));
+            TwitchBot.SendBigDicePing(TwitchBot, Channel, Username);
         }
     }
 }

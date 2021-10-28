@@ -29,12 +29,9 @@ namespace ApuDoingStuff.Commands.DiceGame
 
         public void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            if (TwitchBot.FightAccepts.Any(d => d.Opponent == Username))
-            {
-                FightAccept fightAccept = TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == Username);
-                TwitchBot.FightTimerExpired(TwitchBot, fightAccept.Channel, fightAccept.Opponent, fightAccept.Challenger);
-                TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == Username));
-            }
+            FightAccept fightAccept = TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == Username);
+            TwitchBot.FightTimerExpired(TwitchBot, fightAccept.Channel, fightAccept.Opponent, fightAccept.Challenger);
+            TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == Username));
         }
     }
 

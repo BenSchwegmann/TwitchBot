@@ -52,7 +52,7 @@
       "CommandName": "dice",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 3600000
+      "Cooldown": 10000
     },
     {
       "CommandName": "points",
@@ -130,7 +130,7 @@
       "CommandName": "bigdice",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 10800000
+      "Cooldown": 10000
     },
     {
       "CommandName": "top",
