@@ -25,6 +25,9 @@
         Lyrics,
         BigDice,
         Top,
+        Shuffle,
+        Locker,
+        Equip,
     }
 
     public enum MessageType

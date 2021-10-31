@@ -52,7 +52,7 @@
       "CommandName": "dice",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 10000
+      "Cooldown": 0
     },
     {
       "CommandName": "points",
@@ -137,7 +137,26 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 20000
+    },
+    {
+      "CommandName": "shuffle",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
+    },
+    {
+      "CommandName": "locker",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
+    },
+    {
+      "CommandName": "equip",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
     }
+
   ],
   "MessageCommands": [
     {
@@ -145,8 +164,4 @@
       "Cooldown": 10000
     }
   ]
-  
-
-
-
 }

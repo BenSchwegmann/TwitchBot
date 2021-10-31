@@ -22,16 +22,25 @@ namespace ApuDoingStuff.Commands.CommandClasses
                     {
                         if (r.EmoteNr == emoteNr)
                         {
-                            if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points >= r.Price)
+                            if (!database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).EmoteNr.Split().Any(s => s == chatMessage.Message.Split()[1]))
                             {
-                                _ = database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Rank = r.Name;
-                                database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points -= r.Price;
-                                database.SaveChanges();
-                                twitchBot.Send(chatMessage.Channel, $"/me APU {Emoji.Tada} congratulations @{chatMessage.Username} you bought the emote: {r.Name}");
+                                if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points >= r.Price)
+                                {
+                                    _ = database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Rank = r.Name;
+                                    database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points -= r.Price;
+                                    database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).EmoteNr += $"{r.EmoteNr} ";
+                                    database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Locker += $"{r.Name} ";
+                                    database.SaveChanges();
+                                    twitchBot.Send(chatMessage.Channel, $"/me APU {Emoji.Tada} congratulations @{chatMessage.Username} you bought the emote: {r.Name}");
+                                }
+                                else
+                                {
+                                    twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you don't have enough points to buy this emote!");
+                                }
                             }
                             else
                             {
-                                twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you don't have enough points to buy this emote!");
+                                twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you already own this emote! (\"?locker\" to get a list of all your emotes");
                             }
                         }
                     });
