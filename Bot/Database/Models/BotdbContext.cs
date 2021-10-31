@@ -61,6 +61,10 @@ namespace ApuDoingStuff.Database.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.EmoteNr).HasMaxLength(50);
+
+                entity.Property(e => e.Locker).HasMaxLength(50);
+
                 entity.Property(e => e.PingMe).HasColumnType("bit(1)");
 
                 entity.Property(e => e.Points).HasDefaultValueSql("'0'");

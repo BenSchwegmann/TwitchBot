@@ -15,13 +15,13 @@ namespace ApuDoingStuff.Commands.CommandClasses
             BotdbContext database = new();
             Random dice = new();
             int randDice = dice.Next(-20, 36);
-            BigDiceSaveTimer saveTimer = new(chatMessage.Channel, chatMessage.Username, twitchBot);
             if (BigDiceSaveTimer.Timers.Any(d => d.Username == chatMessage.Username))
             {
                 twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)BigDiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points ?? 0}]");
             }
             else
             {
+                BigDiceSaveTimer saveTimer = new(chatMessage.Channel, chatMessage.Username, twitchBot);
                 BigDiceSaveTimer.Timers.Add(saveTimer);
                 if (database.Dicegamedbs.Any(d => d.UserName == chatMessage.Username))
                 {

@@ -1,4 +1,7 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace ApuDoingStuff.Database.Models
 {
@@ -9,5 +12,7 @@ namespace ApuDoingStuff.Database.Models
         public int? Points { get; set; }
         public bool? PingMe { get; set; }
         public string Rank { get; set; }
+        public string EmoteNr { get; set; }
+        public string Locker { get; set; }
     }
 }

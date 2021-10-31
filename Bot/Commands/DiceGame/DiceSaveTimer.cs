@@ -30,6 +30,7 @@ namespace ApuDoingStuff.Commands.DiceGame
 
         public void OnTimedEvent(object source, EventArgs e)
         {
+            (source as HTimer).Stop();
             Timers.Remove(Timers.FirstOrDefault(d => d.Username == Username));
             TwitchBot.SendDicePing(TwitchBot, Channel, Username);
         }
