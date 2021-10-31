@@ -139,6 +139,31 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     <td>
       You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
     </td>
+  </thead>
+  <thead>
+    <td>
+      Buy
+    </td>
+    <td>
+      You can buy diffrent emotes ("?shop") wich will then display befor you name in any dice command.
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Locker
+    </td>
+    <td>
+      With this command you can display your collected emotes.
+    </td>
+  </thead>
+  <thead>
+    <td>
+      Equip
+    </td>
+    <td>
+      Lets you equip any emote you collected so far.
+    </td>
+  </thead>
   <thead>
     <td>
       DiceFight
