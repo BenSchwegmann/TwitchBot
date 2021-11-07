@@ -97,6 +97,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     </td>
   </thead>
 </table>
+
 ## Dice Game commands:
 
 <table>
