@@ -9,17 +9,17 @@ If you have any suggestions for the bot or want the bot in your channel, please 
 * Prefix: **?**
 
 <table>
-  <th>
-    <td>
+  <tr>
+    <th>
       <b> Commands </b>
-    </td>
-    <td>
+    </th>
+    <th>
       <b> Description </b>
-    </td>
-  </th>
+    </th>
+  </tr>
   <tr>
     <td>
-      ping 
+      ping
     </td>
     <td>
       Checks if the bot is online. Also gives back the runtime!
@@ -102,14 +102,14 @@ If you have any suggestions for the bot or want the bot in your channel, please 
 ## Dice Game commands:
 
 <table>
-  <th>
-    <td>
+  <tr>
+    <th>
       <b> Commands </b>
-    </td>
-    <td>
+    </th>
+    <th>
       <b> Description </b>
-    </td>
-  </th>
+    </th>
+  </tr>
   <tr>
     <td>
       Dice
