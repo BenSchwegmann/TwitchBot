@@ -96,9 +96,9 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Get an genius link to the questioned lyrics <a href="https://some-random-api.ml/lyrics?title=">[API]</a>
     </td>
   </thead>
-  </table>
-  
-## Commands for the dice game:
+</table>
+
+## Commands for the Dice Game:
 
 <table>
   <thead>
