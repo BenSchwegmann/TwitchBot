@@ -132,6 +132,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     <td>
       Checks your current points or of someone else.
     </td>
+  </thead>  
   <thead>
     <td>
       PingMe
