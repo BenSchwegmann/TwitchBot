@@ -10,14 +10,6 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            if (chatMessage.Message.IsMatch(@"^\?set\sbanuser\s[01](\s|$)"))
-            {
-                BotdbContext database = new();
-                database.Banuserconfigs.FirstOrDefault(b => b.ChannelName == chatMessage.Channel).State = chatMessage.Message.Split()[2] != "0";
-                database.SaveChanges();
-                twitchBot.Send(chatMessage.Channel, $"/me APU banUser command has been set to {(chatMessage.Message.Split()[2] == "0" ? 0 : 1)}");
-            }
-
             if (chatMessage.Message.IsMatch(@"^\?set\spingme\s[01](\s|$)"))
             {
                 BotdbContext database = new();

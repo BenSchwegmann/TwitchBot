@@ -15,6 +15,11 @@
             Points = points;
             Challenger = challenger;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is FightAccept fight && fight.Challenger == Challenger && fight.Opponent == Opponent && fight.Points == Points && fight.Channel == Channel;
+        }
     }
 
 }

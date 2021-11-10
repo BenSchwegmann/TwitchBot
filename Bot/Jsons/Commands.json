@@ -7,20 +7,8 @@
       "Cooldown": 30000
     },
     {
-      "CommandName": "commands",
-      "Description": "Directs you to this page.",
-      "NeededPermission": 0,
-      "Cooldown": 30000
-    },
-    {
       "CommandName": "color",
       "Description": "Returns the HEX Color Code and the RGBA Color Space of your twitch name.",
-      "NeededPermission": 0,
-      "Cooldown": 30000
-    },
-    {
-      "CommandName": "banuser",
-      "Description": "ok",
       "NeededPermission": 0,
       "Cooldown": 30000
     },
@@ -64,7 +52,7 @@
       "CommandName": "dicefight",
       "Desciption": "-",
       "NeededPermission": 0,
-      "Cooldown": 40000
+      "Cooldown": 20000
     },
     {
       "CommandName": "fight",
@@ -155,6 +143,12 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 20000
+    },
+    {
+      "CommandName": "gift",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 50000
     }
 
   ],

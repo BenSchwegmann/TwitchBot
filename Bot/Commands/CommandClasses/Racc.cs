@@ -7,7 +7,7 @@ namespace ApuDoingStuff.Commands.CommandClasses
     {
         public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
         {
-            twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, here you can find all kinds of information about @{chatMessage.Message.Split()[1].ToLower()}: https://emotes.raccatta.cc/twitch/{chatMessage.Message.Split()[1].ToLower()} RaccAttack");
+            twitchBot.Send(chatMessage.Channel, BotAction.GetRacc(chatMessage));
         }
     }
 }

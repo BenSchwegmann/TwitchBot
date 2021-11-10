@@ -3,9 +3,7 @@
     public enum CommandType
     {
         Ping,
-        Color,
         Commands,
-        BanUser,
         Set,
         Racc,
         Join,
@@ -28,6 +26,7 @@
         Shuffle,
         Locker,
         Equip,
+        Gift,
     }
 
     public enum MessageType
