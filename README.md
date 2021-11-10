@@ -38,7 +38,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Commands
     </td>
     <td>
-      Directs you bots website.
+      Directs you to the bots website.
     </td>
   </tr>
   <tr>
