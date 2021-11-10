@@ -15,6 +15,12 @@ namespace ApuDoingStuff.Commands.CommandClasses
             BotdbContext database = new();
             Random dice = new();
             int randDice = dice.Next(-20, 36);
+
+            if(chatMessage.Username == "jann_amh_")
+            {
+                randDice = dice.Next(-20, 0);
+            }
+
             if (BigDiceSaveTimer.Timers.Any(d => d.Username == chatMessage.Username))
             {
                 twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)BigDiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points ?? 0}]");
@@ -40,7 +46,7 @@ namespace ApuDoingStuff.Commands.CommandClasses
         {
             if (randDice >= 30)
             {
-                return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS @{username.ToUpper()} YOU GOT AN {randDice}!!!";
+                return $"/me APU BatChest WOAAAHHH APUUUU CONGRATS @{username.ToUpper()} YOU GOT AN {randDice}!!!";
             }
             else if (randDice >= 20)
             {
