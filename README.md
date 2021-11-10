@@ -27,7 +27,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
   </tr>
   <tr>
     <td>
-      commands
+      GitHub
     </td>
     <td>
       Directs you to this page.
@@ -35,18 +35,10 @@ If you have any suggestions for the bot or want the bot in your channel, please 
   </tr>
   <tr>
     <td>
-      color
+      Commands
     </td>
     <td>
-      Returns the HEX Color Code and the RGBA Color Space of your twitch name.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      BanUser
-    </td>
-    <td>
-      Bans the given user (eg.: "?BanUser forsen"). Can be turned of with "?set banuser 0" by a moderator or the broadcaster.
+      Directs you to the bots website.
     </td>
   </tr>
   <tr>
