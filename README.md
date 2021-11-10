@@ -19,7 +19,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
   </tr>
   <tr>
     <td>
-      ping
+      Ping
     </td>
     <td>
       Checks if the bot is online. Also gives back the runtime!
