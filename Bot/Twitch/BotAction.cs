@@ -71,16 +71,15 @@ namespace ApuDoingStuff.Twitch
 
                 if (chatMessage.Username == Resources.Owner)
                 {
-                    BotdbContext database = new();
-                    _ = database.Channels.Add(new Channel { Channel1 = $"{channel}" });
-                    if (database.Channels.Any(d => d.Channel1 == channel))
+                    _ = _database.Channels.Add(new Channel { Channel1 = $"{channel}" });
+                    if (_database.Channels.Any(d => d.Channel1 == channel))
                     {
                         return $"/me APU @{chatMessage.Username}, the bot is already connected to this channel!";
                     }
                     else
                     {
                         twitchBot.TwitchClient.JoinChannel(chatMessage.Message.Split()[1]);
-                        database.SaveChanges();
+                        _database.SaveChanges();
                         twitchBot.Send(chatMessage.Message.Split()[1], $"/me APU {Emoji.ConfettiBall} bot joined!");
                         return $"/me APU Bot joined channel: @{channel}";
 
