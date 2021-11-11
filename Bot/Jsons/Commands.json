@@ -4,13 +4,19 @@
       "CommandName": "ping",
       "Description": "Checks if the bot is online. Also gives back the runtime!",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 20000
     },
     {
       "CommandName": "color",
       "Description": "Returns the HEX Color Code and the RGBA Color Space of your twitch name.",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 20000
+    },
+    {
+      "CommandName": "commands",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
     },
     {
       "CommandName": "set",
@@ -22,7 +28,7 @@
       "CommandName": "racc",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 20000
     },
     {
       "CommandName": "join",
@@ -44,9 +50,9 @@
     },
     {
       "CommandName": "points",
-      "Cooldown": 30000,
       "Description": "-",
-      "NeededPermission": 0
+      "NeededPermission": 0,
+      "Cooldown": 30000
     },
     {
       "CommandName": "dicefight",
@@ -64,19 +70,19 @@
       "CommandName": "github",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 20000
     },
     {
       "CommandName": "buy",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 20000
     },
     {
       "CommandName": "shop",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 20000
     },
     {
       "CommandName": "shiba",

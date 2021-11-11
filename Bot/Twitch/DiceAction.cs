@@ -16,25 +16,24 @@ namespace ApuDoingStuff.Twitch
 {
     public class DiceAction
     {
-        private static readonly BotdbContext _database = new();
         public static string GetBigDice(ChatMessage chatMessage, TwitchBot twitchBot)
         {
+            BotdbContext database = new();
             Random dice = new();
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             int randDice = dice.Next(-20, 36);
             if (BigDiceSaveTimer.Timers.Any(d => d.Username == chatMessage.Username))
             {
-                return $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)BigDiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstUser(chatMessage).Points ?? 0}]";
+                return $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)BigDiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstOrDefault(chatMessage.Username).Points ?? 0}]";
             }
             else
             {
                 BigDiceSaveTimer saveTimer = new(chatMessage.Channel, chatMessage.Username, twitchBot);
                 BigDiceSaveTimer.Timers.Add(saveTimer);
-                Dicegamedb user = DbController.GetFirstUser(chatMessage);
                 if (user != null)
                 {
-                    // database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points += randDice;
-                    _database.SaveChanges();
-                    return $"{GetMessage(chatMessage.Username, randDice)} [current points of @{chatMessage.Username}: {user.Points ?? 0}]";
+                    DbController.AddPoints(chatMessage.Username, randDice);
+                    return $"{GetMessage(chatMessage.Username, randDice)} [current points of @{chatMessage.Username}: {user.Points + randDice}]";
                 }
                 else
                 {
@@ -77,23 +76,23 @@ namespace ApuDoingStuff.Twitch
         {
             if (chatMessage.Message.Split().Length >= 2)
             {
+                BotdbContext database = new();
                 int emoteNr = chatMessage.Message.Split()[1].ToInt();
                 if (chatMessage.Message.Split()[1].IsMatch(@"^\d+$") && JsonController.Ranks.Any(r => r.EmoteNr == emoteNr))
                 {
+                    Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
                     foreach (Rank r in JsonController.Ranks)
                     {
                         if (r.EmoteNr == emoteNr)
                         {
-                            if (!_database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).EmoteNr.Split().Any(s => s == chatMessage.Message.Split()[1]))
+                            if (!user.EmoteNr.Split().Any(s => s == chatMessage.Message.Split()[1]))
                             {
-                                if (_database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points >= r.Price)
+                                if (user.Points >= r.Price)
                                 {
-                                    _ = _database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Rank = r.Name;
-                                    Dicegamedb user = DbController.GetFirstUser(chatMessage);
-                                    user.Points -= r.Price;
-                                    user.EmoteNr += $"{r.EmoteNr} ";
-                                    user.Locker += $" {r.Name}";
-                                    _database.SaveChanges();
+                                    _ = user.Rank = r.Name;
+                                    DbController.SubPoints(chatMessage.Username, r.Price);
+                                    DbController.AddEmoteNr(chatMessage.Username, $" {r.EmoteNr}");
+                                    DbController.AddLocker(chatMessage.Username, $" {r.Name}");
                                     return $"/me APU {Emoji.Tada} congratulations @{chatMessage.Username} you bought the emote: {r.Name}";
                                 }
                                 else
@@ -126,27 +125,27 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendDice(ChatMessage chatMessage, TwitchBot twitchBot)
         {
+            BotdbContext database = new();
             Random dice = new();
             int randDice = dice.Next(1, 7);
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             if (DiceSaveTimer.Timers.Any(d => d.Username == chatMessage.Username))
             {
-                return $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)DiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstUser(chatMessage).Points ?? 0}]";
+                return $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)DiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstOrDefault(chatMessage.Username).Points ?? 0}]";
             }
             else
             {
                 DiceSaveTimer saveTimer = new(chatMessage.Channel, chatMessage.Username, twitchBot);
                 DiceSaveTimer.Timers.Add(saveTimer);
-                Dicegamedb user = DbController.GetFirstUser(chatMessage);
                 if (user != null)
                 {
-                    // database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username).Points += randDice;
-                    _database.SaveChanges();
-                    return $"/me APU [ {user.Rank} ] @{chatMessage.Username}, you got a {randDice} [current points: {user.Points ?? 0}]";
+                    DbController.AddPoints(chatMessage.Username, randDice);
+                    return $"/me APU [ {user.Rank} ] @{chatMessage.Username}, you got a {randDice} [current points: {user.Points + randDice}]";
                 }
                 else
                 {
-                    _ = _database.Dicegamedbs.Add(new Dicegamedb { UserName = chatMessage.Username, Points = randDice, PingMe = true, Rank = "-" });
-                    _database.SaveChanges();
+                    _ = database.Dicegamedbs.Add(new Dicegamedb { UserName = chatMessage.Username, Points = randDice, PingMe = true, Rank = "-" });
+                    database.SaveChanges();
                     return $"/me APU @{chatMessage.Username}, you got a {randDice}";
                 }
             }
@@ -154,7 +153,8 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendDiceFight(ChatMessage chatMessage, TwitchBot twitchBot)
         {
-            Dicegamedb user = DbController.GetFirstUser(chatMessage);
+            BotdbContext database = new();
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             if (chatMessage.Message.Split().Length >= 3)
             {
                 string points = chatMessage.Message.Split()[2];
@@ -168,7 +168,7 @@ namespace ApuDoingStuff.Twitch
                     }
                     else
                     {
-                        if (_database.Dicegamedbs.Any(d => d.UserName == chatMessage.Message.Split()[1]))
+                        if (DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]) != null)
                         {
                             if (chatMessage.Message.Split()[1].ToLower() == chatMessage.Username)
                             {
@@ -177,13 +177,14 @@ namespace ApuDoingStuff.Twitch
                             else
                             {
                                 string enemy = chatMessage.Message.Split()[1].ToLower();
-                                Dicegamedb enemyDb = DbController.GetFirstEnemy(enemy);
+                                Dicegamedb enemyDb = DbController.GetFirstOrDefault(enemy);
                                 if (user.Points >= setPoints)
                                 {
                                     if (enemyDb != null && enemyDb.Points >= setPoints)
                                     {
                                         TwitchBot.FightAccepts.Add(new(enemy, chatMessage.Channel, setPoints, chatMessage.Username));
                                         FightSaveTimer saveTimer = new(chatMessage.Channel, enemy, chatMessage.Username, twitchBot);
+                                        TwitchBot.FightSaveTimers.Add(saveTimer);
                                         return $"/me APU {$"[ {enemyDb.Rank} ]"} @{enemy}, you were challenged. If you want to accept please type \"?fight accept\" otherwise type \"?fight decline\"";
                                     }
                                     else
@@ -216,13 +217,13 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendEquip(ChatMessage chatMessage)
         {
-            Dicegamedb user = DbController.GetFirstUser(chatMessage);
+            BotdbContext database = new();
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             if (user.Locker.Split().Any(s => s == chatMessage.Message.Split()[1]))
             {
                 if (chatMessage.Message.Split()[1] != user.Rank)
                 {
-                    user.Rank = chatMessage.Message.Split()[1];
-                    _database.SaveChanges();
+                    DbController.SetRank(chatMessage.Username, chatMessage.Message.Split()[1]);
                     return $"/me APU @{chatMessage.Username}, you succesfully equipped: {chatMessage.Message.Split()[1]}";
                 }
                 else
@@ -238,6 +239,8 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendFight(ChatMessage chatMessage)
         {
+            BotdbContext database = new();
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             if (TwitchBot.FightAccepts.Any(d => d.Opponent == chatMessage.Username))
             {
                 string challenger = TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username).Challenger;
@@ -250,34 +253,34 @@ namespace ApuDoingStuff.Twitch
 
                     string[] opponents = { challenger, chatMessage.Username };
                     string winner = opponents.Random();
-                    DbController.GetFirstChallenger(challenger).Points -= points;
-                    DbController.GetFirstUser(chatMessage).Points -= points;
-                    DbController.GetFirstWinner(winner).Points += winnerPoints;
-                    _database.SaveChanges();
+                    DbController.SubPoints(challenger, points);
+                    DbController.SubPoints(chatMessage.Username, points);
+                    DbController.AddPoints(winner, winnerPoints);
+                    TwitchBot.FightSaveTimers.FirstOrDefault(d => d.Username == chatMessage.Username).FightTimer.Stop();
+                    TwitchBot.FightSaveTimers.Remove(TwitchBot.FightSaveTimers.FirstOrDefault(d => d.Username == chatMessage.Username));
+                    TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username));
                     if (winner == challenger)
                     {
                         if (points == 1)
                         {
-                            return $"/me APU unlucky i guess @{chatMessage.Username}. You lost {points} point :(";
+                            return $"/me APU {Emoji.ConfettiBall} PAAG @{winner} you won against @{chatMessage.Username} and made {winnerPoints} points! Unfortunately you lost {points} point @{chatMessage.Username} ... sooo unlucky :/ ";
                         }
                         else
                         {
-                            return $"/me APU unlucky i guess @{chatMessage.Username}. You lost {points} points :(";
+                            return $"/me APU {Emoji.ConfettiBall} PAAG @{winner} you won against @{chatMessage.Username} and made {winnerPoints} points! Unfortunately you lost {points} points @{chatMessage.Username} ... sooo unlucky :/ ";
                         }
                     }
                     else if (winner == chatMessage.Username)
                     {
                         if (points == 1)
                         {
-                            return $"/me APU unlucky i guess @{challenger}. You lost {points} point :(";
+                            return $"/me APU {Emoji.ConfettiBall} PAAG @{winner} you won against @{challenger} and made {winnerPoints} points! Unfortunately you lost {points} point @{challenger} ... sooo unlucky :/ ";
                         }
                         else
                         {
-                            return $"/me APU unlucky i guess @{challenger}. You lost {points} points :(";
+                            return $"/me APU {Emoji.ConfettiBall} PAAG @{winner} you won against @{challenger} and made {winnerPoints} points! Unfortunately you lost {points} points @{challenger} ... sooo unlucky :/ ";
                         }
                     }
-                    TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username));
-                    return $"/me APU {Emoji.ConfettiBall} congratulations @{winner} you just won {winnerPoints} points!";
                 }
 
                 if (chatMessage.Message.IsMatch("^?fight decline"))
@@ -293,13 +296,15 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                return $"/me APU {$"[ {DbController.GetFirstUser(chatMessage).Rank} ]"} @{chatMessage.Username}, you have not been challenged.";
+                return $"/me APU {$"[ {user.Rank} ]"} @{chatMessage.Username}, you have not been challenged.";
             }
         }
 
         public static string SendGift(ChatMessage chatMessage)
         {
-            Dicegamedb user = DbController.GetFirstUser(chatMessage);
+            BotdbContext database = new();
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
+            Dicegamedb split1 = DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]);
             if (chatMessage.Message.Split().Length == 3)
             {
                 if (chatMessage.Message.Split()[1].ToLower() == chatMessage.Username)
@@ -316,11 +321,12 @@ namespace ApuDoingStuff.Twitch
                         {
                             if (points == 1)
                             {
-                                if (_database.Dicegamedbs.Any(d => d.UserName == chatMessage.Message.Split()[1]) && user.Points >= 0)
+                                if (user != null && user.Points >= 0)
                                 {
-                                    user.Points -= points;
-                                    _database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Message.Split()[1]).Points += points;
-                                    _database.SaveChanges();
+                                    DbController.SubPoints(chatMessage.Username, points);
+                                    DbController.AddPoints(chatMessage.Message.Split()[1], points);
+                                    split1.Points += points;
+                                    database.SaveChanges();
                                     return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} points!";
                                 }
                                 else
@@ -352,7 +358,7 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendLocker(ChatMessage chatMessage)
         {
-            Dicegamedb user = DbController.GetFirstUser(chatMessage);
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             string result = "";
             if (user.Locker != null)
             {
@@ -368,10 +374,10 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendPoints(ChatMessage chatMessage)
         {
-            Dicegamedb user = DbController.GetFirstUser(chatMessage);
+            Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             if (chatMessage.Message.Split().Length == 1)
             {
-                if (_database.Dicegamedbs.Any(d => d.UserName == chatMessage.Username))
+                if (user != null)
                 {
                     return $"/me APU [ {user.Rank} ] @{chatMessage.Username} your current points: {user.Points}";
                 }
@@ -382,7 +388,8 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                if (_database.Dicegamedbs.Any(d => d.UserName == chatMessage.Message.Split()[1]))
+                Dicegamedb split1 = DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]);
+                if (split1 != null)
                 {
                     return $"/me APU [ {user.Rank} ] @{chatMessage.Message.Split()[1]} current points: {user.Points}";
                 }
@@ -402,23 +409,23 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendTopPlayers(ChatMessage chatMessage)
         {
+            BotdbContext database = new();
             string result = "";
             if (chatMessage.Message.Split().Length >= 2)
             {
-                if (_database.Dicegamedbs.Count() < chatMessage.Message.Split()[1].ToInt())
+                if (chatMessage.Message.Split()[1].Equals("all"))
                 {
-                    List<Dicegamedb> topPlayers = _database.Dicegamedbs.OrderByDescending(d => d.Points).Take(_database.Dicegamedbs.Count()).ToList();
+                    List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).ToList();
                     topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
-                    return $"/me APU @{chatMessage.Username}, the top {_database.Dicegamedbs.Count()}: {result}";
+                    return $"/me APU @{chatMessage.Username}, the top list: {result}";
                 }
                 else
                 {
-
-                    if (chatMessage.Message.Split()[1].Equals("all"))
+                    if (database.Dicegamedbs.Count() < chatMessage.Message.Split()[1].ToInt())
                     {
-                        List<Dicegamedb> topPlayers = _database.Dicegamedbs.OrderByDescending(d => d.Points).ToList();
+                        List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).Take(database.Dicegamedbs.Count()).ToList();
                         topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
-                        return $"/me APU @{chatMessage.Username}, the top list: {result}";
+                        return $"/me APU @{chatMessage.Username}, the top {database.Dicegamedbs.Count()}: {result}";
                     }
                     else
                     {
@@ -426,12 +433,12 @@ namespace ApuDoingStuff.Twitch
                         {
                             if (chatMessage.Message.Split()[1].ToInt() == 1)
                             {
-                                Dicegamedb topPlayer = _database.Dicegamedbs.OrderByDescending(d => d.Points).FirstOrDefault();
+                                Dicegamedb topPlayer = database.Dicegamedbs.OrderByDescending(d => d.Points).FirstOrDefault();
                                 return $"/me APU @{chatMessage.Username}, the best player right now is @{topPlayer.UserName.Insert(2, "󠀀")} with {topPlayer.Points} points B)";
                             }
                             else
                             {
-                                List<Dicegamedb> topPlayers = _database.Dicegamedbs.OrderByDescending(d => d.Points).Take(chatMessage.Message.Split()[1].ToInt()).ToList();
+                                List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).Take(chatMessage.Message.Split()[1].ToInt()).ToList();
                                 topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
                                 return $"/me APU @{chatMessage.Username}, the top {chatMessage.Message.Split()[1]}: {result}";
                             }
@@ -445,7 +452,7 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                List<Dicegamedb> topPlayers = _database.Dicegamedbs.OrderByDescending(d => d.Points).Take(3).ToList();
+                List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).Take(3).ToList();
                 topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
                 return $"/me APU @{chatMessage.Username}, the top 3: {result}";
             }

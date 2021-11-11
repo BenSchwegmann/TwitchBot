@@ -42,6 +42,7 @@ namespace ApuDoingStuff.Twitch
         public static readonly List<MessageCooldown> MessageCooldowns = new();
         public static readonly Dictionary<string, string> DiceTimer = new();
         public static readonly List<FightAccept> FightAccepts = new();
+        public static readonly List<FightSaveTimer> FightSaveTimers = new();
         public const int MaxLenght = 500;
 
 

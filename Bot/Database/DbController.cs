@@ -1,35 +1,49 @@
 ﻿using ApuDoingStuff.Database.Models;
 using System.Linq;
-using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Database
 {
     public class DbController
     {
-        private static readonly BotdbContext _database = new();
-        public static Dicegamedb GetFirstUser(ChatMessage chatMessage)
+        public static Dicegamedb GetFirstOrDefault(string username)
         {
-            return _database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Username);
+            BotdbContext database = new();
+            return database.Dicegamedbs.FirstOrDefault(d => d.UserName == username);
         }
 
-        public static Dicegamedb GetFirstEnemy(string enemy)
+        public static void AddPoints(string username, int points)
         {
-            return _database.Dicegamedbs.FirstOrDefault(d => d.UserName == enemy);
+            BotdbContext database = new();
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Points += points;
+            database.SaveChanges();
         }
 
-        public static Dicegamedb GetFirstChallenger(string challenger)
+        public static void SubPoints(string username, int points)
         {
-            return _database.Dicegamedbs.FirstOrDefault(d => d.UserName == challenger);
+            BotdbContext database = new();
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Points -= points;
+            database.SaveChanges();
         }
 
-        public static Dicegamedb GetFirstWinner(string winner)
+        public static void AddEmoteNr(string username, string emoteNr)
         {
-            return _database.Dicegamedbs.FirstOrDefault(d => d.UserName == winner);
+            BotdbContext database = new();
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).EmoteNr += emoteNr;
+            database.SaveChanges();
         }
 
-        public static Dicegamedb GetFirstSplit1(ChatMessage chatMessage)
+        public static void AddLocker(string username, string name)
         {
-            return _database.Dicegamedbs.FirstOrDefault(d => d.UserName == chatMessage.Message.Split()[1]);
+            BotdbContext database = new();
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Locker += name;
+            database.SaveChanges();
+        }
+
+        public static void SetRank(string username, string emote)
+        {
+            BotdbContext database = new();
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Rank = emote;
+            database.SaveChanges();
         }
     }
 }

@@ -27,8 +27,15 @@ namespace ApuDoingStuff.Commands.DiceGame
             FightTimer.Start();
         }
 
+        ~FightSaveTimer()
+        {
+            FightTimer.Stop();
+        }
+
         public void OnTimedEvent(object source, ElapsedEventArgs e)
         {
+            System.Console.WriteLine(Username);
+            TwitchBot.FightAccepts.ForEach(d => System.Console.WriteLine(d.Opponent));
             FightAccept fightAccept = TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == Username);
             TwitchBot.FightTimerExpired(TwitchBot, fightAccept.Channel, fightAccept.Opponent, fightAccept.Challenger);
             TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == Username));
