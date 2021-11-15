@@ -27,6 +27,7 @@
         Locker,
         Equip,
         Gift,
+        Apu,
     }
 
     public enum MessageType

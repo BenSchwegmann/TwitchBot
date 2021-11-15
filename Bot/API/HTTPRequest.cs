@@ -1,4 +1,6 @@
 ﻿using HLE.HttpRequests;
+using System.CodeDom;
+using System.Linq;
 using System.Text.Json;
 
 namespace ApuDoingStuff.API
@@ -11,6 +13,7 @@ namespace ApuDoingStuff.API
         private const string _randomCatFact = "https://catfact.ninja/fact";
         private const string _randomDogUrl = "https://random.dog/woof.json";
         private const string _randomAxolotlUrl = "https://axoltlapi.herokuapp.com/";
+        private const string _randomApuUrl = "https://meme-api.herokuapp.com/gimme/Apustaja";
 
         public static string RandomShibaUrl()
         {
@@ -110,6 +113,32 @@ namespace ApuDoingStuff.API
             if (request.ValidJsonData)
             {
                 return $"{lyricsLink}";
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+
+        public static string RandomApuPicUrl()
+        {
+            HttpGet request = new(_randomApuUrl);
+            if (request.ValidJsonData)
+            {
+                return request.Data.GetProperty("url").ToString();
+            }
+            else
+            {
+                return request.Result;
+            }
+        }
+
+        public static string RandomApuTitleUrl()
+        {
+            HttpGet request = new(_randomApuUrl);
+            if (request.ValidJsonData)
+            {
+                return request.Data.GetProperty("title").ToString();
             }
             else
             {

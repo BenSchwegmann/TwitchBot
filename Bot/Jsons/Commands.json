@@ -155,6 +155,12 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 50000
+    },
+    {
+      "CommandName": "apu",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 10000
     }
 
   ],

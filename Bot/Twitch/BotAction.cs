@@ -135,7 +135,7 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendPing(ChatMessage chatMessage, TwitchBot twitchBot)
         {
-            return $"/me APU {Emoji.MagicWand} PONG! {twitchBot.GetRuntime()}";
+            return $"/me APU {Emoji.MagicWand} PONG! {twitchBot.GetSystemInfo()}";
         }
 
         public static string GetRacc(ChatMessage chatMessage)
@@ -173,6 +173,11 @@ namespace ApuDoingStuff.Twitch
         public static string SendShiba(ChatMessage chatMessage)
         {
             return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomShibaUrl()} ConcernDoge";
+        }
+
+        public static string SendApuPic(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomApuTitleUrl()} {HTTPRequest.RandomApuPicUrl()}";
         }
     }
 }

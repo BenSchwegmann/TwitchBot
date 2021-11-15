@@ -1,0 +1,18 @@
+﻿using ApuDoingStuff.Twitch;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TwitchLib.Client.Models;
+
+namespace ApuDoingStuff.Commands.CommandClasses
+{
+    public class Apu
+    {
+        public static void Handle(TwitchBot twitchBot, ChatMessage chatMessage)
+        {
+            twitchBot.Send(chatMessage.Channel, BotAction.SendApuPic(chatMessage));
+        }
+    }
+}
