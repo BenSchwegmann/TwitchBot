@@ -45,5 +45,17 @@ namespace ApuDoingStuff.Database
             database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Rank = emote;
             database.SaveChanges();
         }
+
+        public static string GetRank(string username)
+        {
+            BotdbContext database = new();
+            return database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Rank;
+        }
+
+        public static Channel GetChannels(string split1)
+        {
+            BotdbContext database = new();
+            return database.Channels.FirstOrDefault(d => d.Channel1 == split1);
+        }
     }
 }
