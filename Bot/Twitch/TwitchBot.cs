@@ -109,12 +109,12 @@ namespace ApuDoingStuff.Twitch
 
         public string GetSystemInfo()
         {
-            return $"Uptime: {Runtime} ApuSpin Memory usage: {GetMemoryUsage()}MB ApuSpin";
+            return $"{GetRuntime()} || Memory usage: {GetMemoryUsage()} MB / 16000 MB";
         }
 
         public string GetRuntime()
         {
-            return $"Uptime: [{Runtime}]";
+            return $"Uptime: {Runtime}";
         }
 
         private static double GetMemoryUsage()
@@ -128,10 +128,6 @@ namespace ApuDoingStuff.Twitch
             return $"The bot is currently in {database.Channels.Max(u => u.Id)} channels";
 
         }
-
-
-
-
         #endregion SystemInfo
 
         #region Bot_On
