@@ -24,7 +24,7 @@ namespace ApuDoingStuff.Twitch
             int randDice = dice.Next(-20, 36);
             if (BigDiceSaveTimer.Timers.Any(d => d.Username == chatMessage.Username))
             {
-                return $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)BigDiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstOrDefault(chatMessage.Username).Points ?? 0}]";
+                return $"/me APU [ {user.Rank} ]  @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)BigDiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstOrDefault(chatMessage.Username).Points ?? 0}]";
             }
             else
             {
@@ -45,27 +45,27 @@ namespace ApuDoingStuff.Twitch
         {
             if (randDice >= 30)
             {
-                return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS @{username.ToUpper()} YOU GOT AN {randDice}!!!";
+                return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS [ {DbController.GetRank(username)} ] @{username.ToUpper()} YOU GOT AN {randDice}!!!";
             }
             else if (randDice >= 20)
             {
-                return $"/me APU {Emoji.PointRight}{Emoji.PointLeft} @{username} h...here is an +{randDice} for you.";
+                return $"/me APU {Emoji.PointRight}{Emoji.PointLeft} [ {DbController.GetRank(username)} ] @{username} h...here is an +{randDice} for you.";
             }
             else if (randDice >= 10)
             {
-                return $"/me APU {Emoji.MagicWand} {Emoji.Sparkles} @{username} the great apu wizard gives you an well deserved {randDice}! {Emoji.Sparkles}";
+                return $"/me APU {Emoji.MagicWand} {Emoji.Sparkles} [ {DbController.GetRank(username)} ] @{username} the great apu wizard gives you an well deserved {randDice}! {Emoji.Sparkles}";
             }
             else if (randDice > 0)
             {
-                return $"/me FBPass APU FBBlock RUUUNNNN @{username.ToUpper()} OR YOU WILL MISS YOUR +{randDice}!";
+                return $"/me FBPass APU FBBlock RUUUNNNN [ {DbController.GetRank(username)} ] @{username.ToUpper()} OR YOU WILL MISS YOUR +{randDice}!";
             }
             else if (randDice <= 0)
             {
-                return $"/me APU @{username} sooo unlucky you got an {randDice}! :/";
+                return $"/me APU [ {DbController.GetRank(username)} ] @{username} sooo unlucky you got an {randDice}! :/";
             }
             else if (randDice < -10)
             {
-                return $"/me APU @{username} oh well that's sad ... you got an {randDice} :(";
+                return $"/me APU [ {DbController.GetRank(username)} ] @{username} oh well that's sad ... you got an {randDice} :(";
             }
             else
             {
@@ -85,6 +85,7 @@ namespace ApuDoingStuff.Twitch
                     {
                         if (r.EmoteNr == emoteNr)
                         {
+                            Console.WriteLine("hello");
                             if (!user.EmoteNr.Split().Any(s => s == chatMessage.Message.Split()[1]))
                             {
                                 if (user.Points >= r.Price)
@@ -131,7 +132,7 @@ namespace ApuDoingStuff.Twitch
             Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             if (DiceSaveTimer.Timers.Any(d => d.Username == chatMessage.Username))
             {
-                return $"/me APU @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)DiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstOrDefault(chatMessage.Username).Points ?? 0}]";
+                return $"/me APU [ {user.Rank} ] @{chatMessage.Username}, you can roll your next dice in {TimeHelper.ConvertUnixTimeToTimeStamp(TimeHelper.Now() - (long)DiceSaveTimer.Timers.FirstOrDefault(d => d.Username == chatMessage.Username).SaveTimer.RemainingTime)} || [current points of @{chatMessage.Username}: {DbController.GetFirstOrDefault(chatMessage.Username).Points ?? 0}]";
             }
             else
             {
@@ -287,7 +288,7 @@ namespace ApuDoingStuff.Twitch
                 {
                     TwitchBot.FightAccepts.FirstOrDefault(d => d.Accepted = false);
                     TwitchBot.FightAccepts.Remove(TwitchBot.FightAccepts.FirstOrDefault(d => d.Opponent == chatMessage.Username));
-                    return $"/me APU @{challenger}, your opponent denied the fight.";
+                    return $"/me APU [ {user.Rank} ] @{challenger}, your opponent denied the fight.";
                 }
                 else
                 {
@@ -326,8 +327,7 @@ namespace ApuDoingStuff.Twitch
                                     DbController.SubPoints(chatMessage.Username, points);
                                     DbController.AddPoints(chatMessage.Message.Split()[1], points);
                                     split1.Points += points;
-                                    database.SaveChanges();
-                                    return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} points!";
+                                    return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} point!";
                                 }
                                 else
                                 {
@@ -336,7 +336,17 @@ namespace ApuDoingStuff.Twitch
                             }
                             else
                             {
-                                return string.Empty;
+                                if (user != null && user.Points >= 0)
+                                {
+                                    DbController.SubPoints(chatMessage.Username, points);
+                                    DbController.AddPoints(chatMessage.Message.Split()[1], points);
+                                    split1.Points += points;
+                                    return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} points!";
+                                }
+                                else
+                                {
+                                    return $"/me APU it appears that @{chatMessage.Username} has no points yet. Type \"?Dice\" to earn points.";
+                                }
                             }
                         }
                         else
@@ -413,25 +423,26 @@ namespace ApuDoingStuff.Twitch
             string result = "";
             if (chatMessage.Message.Split().Length >= 2)
             {
-                if (chatMessage.Message.Split()[1].Equals("all"))
+                string split1 = chatMessage.Message.Split()[1];
+                if (split1.Equals("all") || split1.All(char.IsDigit))
                 {
-                    List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).ToList();
-                    topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
-                    return $"/me APU @{chatMessage.Username}, the top list: {result}";
-                }
-                else
-                {
-                    if (database.Dicegamedbs.Count() < chatMessage.Message.Split()[1].ToInt())
+                    if (split1.Equals("all"))
                     {
-                        List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).Take(database.Dicegamedbs.Count()).ToList();
+                        List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).ToList();
                         topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
-                        return $"/me APU @{chatMessage.Username}, the top {database.Dicegamedbs.Count()}: {result}";
+                        return $"/me APU @{chatMessage.Username}, the top list: {result}";
                     }
                     else
                     {
-                        if (chatMessage.Message.Split()[1].All(char.IsDigit))
+                        if (database.Dicegamedbs.Count() < split1.ToInt())
                         {
-                            if (chatMessage.Message.Split()[1].ToInt() == 1)
+                            List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).Take(database.Dicegamedbs.Count()).ToList();
+                            topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
+                            return $"/me APU @{chatMessage.Username}, the top {database.Dicegamedbs.Count()}: {result}";
+                        }
+                        else
+                        {
+                            if (split1.ToInt() == 1)
                             {
                                 Dicegamedb topPlayer = database.Dicegamedbs.OrderByDescending(d => d.Points).FirstOrDefault();
                                 return $"/me APU @{chatMessage.Username}, the best player right now is @{topPlayer.UserName.Insert(2, "󠀀")} with {topPlayer.Points} points B)";
@@ -443,11 +454,12 @@ namespace ApuDoingStuff.Twitch
                                 return $"/me APU @{chatMessage.Username}, the top {chatMessage.Message.Split()[1]}: {result}";
                             }
                         }
-                        else
-                        {
-                            return $"/me APU @{chatMessage.Username}, the given number of players may not be a comma number and must be positive!";
-                        }
                     }
+
+                }
+                else
+                {
+                    return $"/me APU @{chatMessage.Username}, the given number of players may not be a comma number and must be positive or with \"?top all\" display all player!";
                 }
             }
             else
