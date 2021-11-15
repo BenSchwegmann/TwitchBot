@@ -94,7 +94,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Apu
     </td>
     <td>
-      Replies with an random picture out of the r/Apustaja reddit <a href="hhttps://meme-api.herokuapp.com/gimme/Apustaja">[API]</a>
+      Replies with an random picture out of the r/Apustaja reddit <a href="https://meme-api.herokuapp.com/gimme/Apustaja">[API]</a>
     </td>
   </tr>
 </table>
