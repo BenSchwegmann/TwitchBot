@@ -89,6 +89,14 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Get an genius link to the questioned lyrics! <a href="https://some-random-api.ml/lyrics?title=">[API]</a>
     </td>
   </tr>
+  <tr>
+    <td>
+      Apu
+    </td>
+    <td>
+      Replies with an random picture out of the r/Apustaja reddit <a href="hhttps://meme-api.herokuapp.com/gimme/Apustaja">[API]</a>
+    </td>
+  </tr>
 </table>
 
 ## Dice Game commands:
