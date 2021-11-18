@@ -161,6 +161,12 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 10000
+    },
+    {
+      "CommandName": "suggest",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 20000
     }
 
   ],

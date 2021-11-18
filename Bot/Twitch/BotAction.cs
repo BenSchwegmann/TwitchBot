@@ -179,5 +179,20 @@ namespace ApuDoingStuff.Twitch
         {
             return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomApuTitleUrl()} {HTTPRequest.RandomApuPicUrl()}";
         }
+
+        public static string GetSuggestion(ChatMessage chatMessage)
+        {
+            BotdbContext database = new();
+            if (chatMessage.Message.Split().Length >= 2)
+            {
+                database.Suggestions.Add(new Suggestion { Username = chatMessage.Username, Suggestion1 = string.Join(" ", chatMessage.Message.Split()[1..]) });
+                database.SaveChanges();
+                return $"/me APU @{chatMessage.Username}, the suggestion has been noted, thank you!";
+            }
+            else
+            {
+                return $"/me APU @{chatMessage.Username}, you need to add an suggestion to your message.";
+            }
+        }
     }
 }

@@ -28,6 +28,7 @@
         Equip,
         Gift,
         Apu,
+        Suggest,
     }
 
     public enum MessageType
