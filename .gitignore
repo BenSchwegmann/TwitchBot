@@ -10,6 +10,7 @@
 
 Properties/
 .editorconfig
+Build/
 
 # User-specific files
 *.rsuser
