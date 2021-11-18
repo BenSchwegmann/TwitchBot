@@ -32,7 +32,7 @@ namespace ApuDoingStuff.Twitch
                 BigDiceSaveTimer.Timers.Add(saveTimer);
                 if (user != null)
                 {
-                    DbController.AddPoints(chatMessage.Username, randDice);
+                    //DbController.AddPoints(chatMessage.Username, randDice);
                     return $"{GetMessage(chatMessage.Username, randDice)} [current points of @{chatMessage.Username}: {user.Points + randDice}]";
                 }
                 else
@@ -85,7 +85,6 @@ namespace ApuDoingStuff.Twitch
                     {
                         if (r.EmoteNr == emoteNr)
                         {
-                            Console.WriteLine("hello");
                             if (!user.EmoteNr.Split().Any(s => s == chatMessage.Message.Split()[1]))
                             {
                                 if (user.Points >= r.Price)
@@ -103,12 +102,8 @@ namespace ApuDoingStuff.Twitch
                             }
                             else
                             {
-                                return $"/me APU @{chatMessage.Username}, you already own this emote! (\"?locker\" to get a list of all your emotes";
+                                return $"/me APU @{chatMessage.Username}, you already own this emote! (\"?locker\" to get a list of all your emotes)";
                             }
-                        }
-                        else
-                        {
-                            return string.Empty;
                         }
                     }
                     return string.Empty;
@@ -141,7 +136,7 @@ namespace ApuDoingStuff.Twitch
                 if (user != null)
                 {
                     DbController.AddPoints(chatMessage.Username, randDice);
-                    return $"/me APU [ {user.Rank} ] @{chatMessage.Username}, you got a {randDice} [current points: {user.Points + randDice}]";
+                    return $"/me APU [ {user.Rank} ] @{chatMessage.Username}, you got a {randDice} {Emoji.GameDie} [current points: {user.Points + randDice}]";
                 }
                 else
                 {
@@ -401,7 +396,7 @@ namespace ApuDoingStuff.Twitch
                 Dicegamedb split1 = DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]);
                 if (split1 != null)
                 {
-                    return $"/me APU [ {user.Rank} ] @{chatMessage.Message.Split()[1]} current points: {user.Points}";
+                    return $"/me APU [ {user.Rank} ] @{chatMessage.Message.Split()[1]} current points: {DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]).Points}";
                 }
                 else
                 {

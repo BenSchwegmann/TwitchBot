@@ -1,6 +1,4 @@
 ﻿using HLE.HttpRequests;
-using System.CodeDom;
-using System.Linq;
 using System.Text.Json;
 
 namespace ApuDoingStuff.API

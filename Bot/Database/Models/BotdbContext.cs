@@ -16,9 +16,9 @@ namespace ApuDoingStuff.Database.Models
         {
         }
 
-        public virtual DbSet<Banuserconfig> Banuserconfigs { get; set; }
         public virtual DbSet<Channel> Channels { get; set; }
         public virtual DbSet<Dicegamedb> Dicegamedbs { get; set; }
+        public virtual DbSet<Suggestion> Suggestions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,19 +30,6 @@ namespace ApuDoingStuff.Database.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Banuserconfig>(entity =>
-            {
-                entity.ToTable("banuserconfig");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.ChannelName).HasMaxLength(50);
-
-                entity.Property(e => e.State)
-                    .HasColumnType("bit(1)")
-                    .HasDefaultValueSql("b'0'");
-            });
-
             modelBuilder.Entity<Channel>(entity =>
             {
                 entity.ToTable("channels");
@@ -61,7 +48,9 @@ namespace ApuDoingStuff.Database.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.EmoteNr).HasMaxLength(50);
+                entity.Property(e => e.EmoteNr)
+                    .HasMaxLength(50)
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.Locker).HasMaxLength(50);
 
@@ -76,6 +65,19 @@ namespace ApuDoingStuff.Database.Models
                 entity.Property(e => e.UserName)
                     .HasMaxLength(50)
                     .HasDefaultValueSql("'0'");
+            });
+
+            modelBuilder.Entity<Suggestion>(entity =>
+            {
+                entity.ToTable("suggestions");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Suggestion1)
+                    .HasMaxLength(50)
+                    .HasColumnName("Suggestion");
+
+                entity.Property(e => e.Username).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -33,6 +33,7 @@ namespace ApuDoingStuff.Twitch
         public WebSocketClient WebSocketClient { get; private set; }
 
         public TcpClient TcpClient { get; private set; }
+        public Restarter Restarter { get; private set; } = new(new() { new(4, 0), new(4, 10), new(4, 20), new(4, 30), new(4, 40), new(4, 50), new(5, 0) });
 
         private static TwitchBot _apu;
 
@@ -85,7 +86,7 @@ namespace ApuDoingStuff.Twitch
             TwitchClient.OnReconnected += Client_OnReconnected;
 
             TwitchClient.Connect();
-
+            Initlialize();
 
         }
 
@@ -134,7 +135,6 @@ namespace ApuDoingStuff.Twitch
 
         private void Client_OnLog(object sender, OnLogArgs e)
         {
-            //ConsoleOut($"LOG>{e.Data}");
         }
 
         private void Client_OnConnected(object sender, OnConnectedArgs e)
@@ -172,6 +172,7 @@ namespace ApuDoingStuff.Twitch
         private void Client_OnConnectionError(object sender, OnConnectionErrorArgs e)
         {
             ConsoleOut($"CONNECTION-ERROR>{e.Error.Message}", ConsoleColor.Red);
+            Restart();
 
         }
 
@@ -184,6 +185,7 @@ namespace ApuDoingStuff.Twitch
         private void Client_OnDisconnect(object sender, OnDisconnectedEventArgs e)
         {
             ConsoleOut($"BOT>DISCONNECTED", ConsoleColor.Red);
+            Restart();
 
         }
 
@@ -217,6 +219,11 @@ namespace ApuDoingStuff.Twitch
         public static void FightTimerExpired(TwitchBot twitchBot, string channel, string opponent, string challenger)
         {
             twitchBot.Send(channel, $"/me APU @{challenger}, your opponent ( @{opponent} ) didn't showed up to the fight :/");
+        }
+
+        private void Initlialize()
+        {
+            Restarter.InitializeResartTimer();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace ApuDoingStuff.Commands.DiceGame
 {
+#pragma warning disable CS0659
     public class FightAccept
     {
         public bool Accepted { get; set; } = false;
