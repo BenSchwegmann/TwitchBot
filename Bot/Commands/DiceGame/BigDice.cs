@@ -16,7 +16,7 @@ namespace ApuDoingStuff.Commands.CommandClasses
             Random dice = new();
             int randDice = dice.Next(-20, 36);
 
-            if(chatMessage.Username == "jann_amh_")
+            if(chatMessage.Username == "winnie_po")
             {
                 randDice = dice.Next(-20, 0);
             }
