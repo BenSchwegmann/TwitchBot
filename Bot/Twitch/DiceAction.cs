@@ -32,7 +32,7 @@ namespace ApuDoingStuff.Twitch
                 BigDiceSaveTimer.Timers.Add(saveTimer);
                 if (user != null)
                 {
-                    //DbController.AddPoints(chatMessage.Username, randDice);
+                    DbController.AddPoints(chatMessage.Username, randDice);
                     return $"{GetMessage(chatMessage.Username, randDice)} [current points of @{chatMessage.Username}: {user.Points + randDice}]";
                 }
                 else
@@ -43,33 +43,14 @@ namespace ApuDoingStuff.Twitch
         }
         private static string GetMessage(string username, int randDice)
         {
-            if (randDice >= 30)
+            switch (randDice)
             {
-                return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS [ {DbController.GetRank(username)} ] @{username.ToUpper()} YOU GOT AN {randDice}!!!";
-            }
-            else if (randDice >= 20)
-            {
-                return $"/me APU {Emoji.PointRight}{Emoji.PointLeft} [ {DbController.GetRank(username)} ] @{username} h...here is an +{randDice} for you.";
-            }
-            else if (randDice >= 10)
-            {
-                return $"/me APU {Emoji.MagicWand} {Emoji.Sparkles} [ {DbController.GetRank(username)} ] @{username} the great apu wizard gives you an well deserved {randDice}! {Emoji.Sparkles}";
-            }
-            else if (randDice > 0)
-            {
-                return $"/me FBPass APU FBBlock RUUUNNNN [ {DbController.GetRank(username)} ] @{username.ToUpper()} OR YOU WILL MISS YOUR +{randDice}!";
-            }
-            else if (randDice <= 0)
-            {
-                return $"/me APU [ {DbController.GetRank(username)} ] @{username} sooo unlucky you got an {randDice}! :/";
-            }
-            else if (randDice < -10)
-            {
-                return $"/me APU [ {DbController.GetRank(username)} ] @{username} oh well that's sad ... you got an {randDice} :(";
-            }
-            else
-            {
-                return "/me APU";
+                case >= 30: return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS [ {DbController.GetRank(username)} ] @{username.ToUpper()} YOU GOT AN {randDice}!!!";
+                case >= 20: return $"/me APU {Emoji.PointRight}{Emoji.PointLeft} [ {DbController.GetRank(username)} ] @{username} h...here is an +{randDice} for you.";
+                case >= 10: return $"/me APU {Emoji.MagicWand} {Emoji.Sparkles} [ {DbController.GetRank(username)} ] @{username} the great apu wizard gives you an well deserved {randDice}! {Emoji.Sparkles}";
+                case > 0: return $"/me FBPass APU FBBlock RUUUNNNN [ {DbController.GetRank(username)} ] @{username.ToUpper()} OR YOU WILL MISS YOUR +{randDice}!";
+                case < -10: return $"/me APU [ {DbController.GetRank(username)} ] @{username} oh well that's sad ... you got an {randDice} :(";
+                case <= 0: return $"/me APU [ {DbController.GetRank(username)} ] @{username} sooo unlucky you got an {randDice}! :/";
             }
         }
         public static string SendBuy(ChatMessage chatMessage)
