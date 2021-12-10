@@ -147,7 +147,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Buy
     </td>
     <td>
-      You can buy diffrent emotes ("?shop") wich will then display befor you name in any dice command.
+      You can buy different emotes ("?shop") wich will then display befor you name in any dice command.
     </td>
   </tr>
   <tr>
