@@ -15,11 +15,6 @@ namespace ApuDoingStuff.Twitch
     {
         private static readonly BotdbContext _database = new();
 
-        public static bool IsOnCooldown(string username, CommandType type)
-        {
-            return TwitchBot.Cooldowns.Any(c => c.Username == username && c.Type == type && c.Time > TimeHelper.Now());
-        }
-
         public static void AddCooldown(string username, CommandType type)
         {
             if (TwitchBot.Cooldowns.Any(c => c.Username == username && c.Type == type))
@@ -29,19 +24,6 @@ namespace ApuDoingStuff.Twitch
                     );
                 AddUserToCooldownDictionary(username, type);
             }
-        }
-
-        public static void AddUserToCooldownDictionary(string username, CommandType type)
-        {
-            if (!TwitchBot.Cooldowns.Any(c => c.Username == username && c.Type == type))
-            {
-                TwitchBot.Cooldowns.Add(new Cooldown(username, type));
-            }
-        }
-
-        public static bool IsOnMessageCooldown(string username, MessageType type)
-        {
-            return TwitchBot.MessageCooldowns.Any(c => c.Username == username && c.Type == type && c.Time > TimeHelper.Now());
         }
 
         public static void AddMessageCooldown(string username, MessageType type)
@@ -55,12 +37,83 @@ namespace ApuDoingStuff.Twitch
             }
         }
 
+        public static void AddUserToCooldownDictionary(string username, CommandType type)
+        {
+            if (!TwitchBot.Cooldowns.Any(c => c.Username == username && c.Type == type))
+            {
+                TwitchBot.Cooldowns.Add(new Cooldown(username, type));
+            }
+        }
+
         public static void AddUserToMessageCooldownDictionary(string username, MessageType type)
         {
             if (!TwitchBot.MessageCooldowns.Any(c => c.Username == username && c.Type == type))
             {
                 TwitchBot.MessageCooldowns.Add(new(username, type));
             }
+        }
+
+        public static string GetCommands(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, here you can find all commands: https://benastro.github.io/ApuDoingStuff/";
+        }
+
+        public static string GetGitHub(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, here you can find the repository of the bot https://github.com/benASTRO/ApuDoingStuff";
+        }
+
+        public static string GetRacc(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, here you can find all kinds of information about @{chatMessage.Message.Split()[1].ToLower()}: https://emotes.raccatta.cc/twitch/{chatMessage.Message.Split()[1].ToLower()} RaccAttack";
+        }
+
+        public static string GetSuggestion(ChatMessage chatMessage)
+        {
+            BotdbContext database = new();
+            if (chatMessage.Message.Split().Length >= 2)
+            {
+                database.Suggestions.Add(new Suggestion { Username = chatMessage.Username, Suggestion1 = string.Join(" ", chatMessage.Message.Split()[1..]) });
+                database.SaveChanges();
+                return $"/me APU @{chatMessage.Username}, the suggestion has been noted, thank you!";
+            }
+            else
+            {
+                return $"/me APU @{chatMessage.Username}, you need to add an suggestion to your message.";
+            }
+        }
+
+        public static bool IsOnCooldown(string username, CommandType type)
+        {
+            return TwitchBot.Cooldowns.Any(c => c.Username == username && c.Type == type && c.Time > TimeHelper.Now());
+        }
+        public static bool IsOnMessageCooldown(string username, MessageType type)
+        {
+            return TwitchBot.MessageCooldowns.Any(c => c.Username == username && c.Type == type && c.Time > TimeHelper.Now());
+        }
+        public static string SendApuPic(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomApuTitleUrl()} {HTTPRequest.RandomApuPicUrl()}";
+        }
+
+        public static string SendAxolotl(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomAxolotFact()} {HTTPRequest.RandomAxolotlUrl()}";
+        }
+
+        public static string SendCat(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomCatFact()} {HTTPRequest.RandomCatUrl()} CoolCat";
+        }
+
+        public static string SendDog(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomDogUrl()} Wowee";
+        }
+
+        public static string SendDuck(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomDuckUrl()} DuckerZ";
         }
 
         public static string SendJoin(ChatMessage chatMessage, TwitchBot twitchBot)
@@ -95,22 +148,6 @@ namespace ApuDoingStuff.Twitch
                 return $"/me APU @{chatMessage.Username}, this is an invalid username";
             }
         }
-
-        public static string GetCommands(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, here you can find all commands: https://benastro.github.io/ApuDoingStuff/";
-        }
-
-        public static string SendDuck(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomDuckUrl()} DuckerZ";
-        }
-
-        public static string GetGitHub(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, here you can find the repository of the bot https://github.com/benASTRO/ApuDoingStuff";
-        }
-
         public static string SendLeave(ChatMessage chatMessage, TwitchBot twitchBot)
         {
             if (chatMessage.IsModerator || chatMessage.IsBroadcaster || chatMessage.Username == Resources.Owner)
@@ -137,10 +174,9 @@ namespace ApuDoingStuff.Twitch
         {
             return $"/me APU {Emoji.MagicWand} PONG! {twitchBot.GetSystemInfo()}";
         }
-
-        public static string GetRacc(ChatMessage chatMessage)
+        public static string SendShiba(ChatMessage chatMessage)
         {
-            return $"/me APU @{chatMessage.Username}, here you can find all kinds of information about @{chatMessage.Message.Split()[1].ToLower()}: https://emotes.raccatta.cc/twitch/{chatMessage.Message.Split()[1].ToLower()} RaccAttack";
+            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomShibaUrl()} ConcernDoge";
         }
 
         public static string SendShuffle(ChatMessage chatMessage)
@@ -155,44 +191,6 @@ namespace ApuDoingStuff.Twitch
                 words.Remove(word);
             }
             return $"/me {result}";
-        }
-
-        public static string SendAxolotl(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomAxolotFact()} {HTTPRequest.RandomAxolotlUrl()}";
-        }
-
-        public static string SendCat(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomCatFact()} {HTTPRequest.RandomCatUrl()} CoolCat";
-        }
-        public static string SendDog(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomDogUrl()} Wowee";
-        }
-        public static string SendShiba(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomShibaUrl()} ConcernDoge";
-        }
-
-        public static string SendApuPic(ChatMessage chatMessage)
-        {
-            return $"/me APU @{chatMessage.Username}, {HTTPRequest.RandomApuTitleUrl()} {HTTPRequest.RandomApuPicUrl()}";
-        }
-
-        public static string GetSuggestion(ChatMessage chatMessage)
-        {
-            BotdbContext database = new();
-            if (chatMessage.Message.Split().Length >= 2)
-            {
-                database.Suggestions.Add(new Suggestion { Username = chatMessage.Username, Suggestion1 = string.Join(" ", chatMessage.Message.Split()[1..]) });
-                database.SaveChanges();
-                return $"/me APU @{chatMessage.Username}, the suggestion has been noted, thank you!";
-            }
-            else
-            {
-                return $"/me APU @{chatMessage.Username}, you need to add an suggestion to your message.";
-            }
         }
     }
 }
