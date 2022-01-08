@@ -3,7 +3,7 @@
   <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c1b46cfb-6bd0-48a7-8bdf-db288daa35f2-profile_image-300x300.png" />
 </p>
 
-If you have any suggestions for the bot or want the bot in your channel, please whisper the [bot owner](https://twitch.tv/benASTRO).
+If you want this bot in your channel, please whisper the [bot owner](https://twitch.tv/benASTRO).
 ## Here you can find a list of all commands:
 
 * Prefix: **?**
@@ -55,10 +55,32 @@ If you have any suggestions for the bot or want the bot in your channel, please 
   </tr>
   <tr>
     <td>
+      Racc
+    </td>
+    <td>
+      Gets the racc website to a specific channel which contains usefull informations.
+    </td>
+    <td>
+      15 s
+    </td>
+  </tr>
+  <tr>
+    <td>
       Shuffle
     </td>
     <td>
       Shuffles the given words.
+    </td>
+    <td>
+      15 s
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Suggest
+    </td>
+    <td>
+      You can suggest changes or features which will be noted.
     </td>
     <td>
       15 s
