@@ -242,17 +242,6 @@ If you want this bot in your channel, please whisper the [bot owner](https://twi
   </tr>
   <tr>
     <td>
-      PingMe
-    </td>
-    <td>
-      You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
-    </td>
-    <td>
-      15 s
-    </td>
-  </tr>
-  <tr>
-    <td>
       Buy
     </td>
     <td>
