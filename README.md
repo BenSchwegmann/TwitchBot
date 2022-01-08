@@ -17,7 +17,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       <b> Description </b>
     </th>
     <th>
-      <b> Cooldown (in sec) </b>
+      <b> Cooldown </b>
     </th>
   </tr>
   <tr>
