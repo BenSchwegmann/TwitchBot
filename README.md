@@ -2,7 +2,9 @@
 <p align="center">
   <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/c1b46cfb-6bd0-48a7-8bdf-db288daa35f2-profile_image-300x300.png" />
 </p>
-    If you want this bot in your channel, please whisper the [bot owner](https://twitch.tv/benASTRO).
+
+If you want this bot in your channel, please whisper the [bot owner](https://twitch.tv/benASTRO).
+    
 ## Here you can find a list of all commands:
 
 * Prefix: **?**
