@@ -72,7 +72,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of a duck. <a href="https://random-d.uk/api/random">[API]</a>
     </td>
     <td>
-      10sec
+      10 sec
     </td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of a cat and a random fact about them. <a href="https://aws.random.cat/meow">[API]</a> & <a href="https://catfact.ninja/fact">[API]</a>
     </td>
     <td>
-      10sec
+      10 sec
     </td>
   </tr>
   <tr>
@@ -94,7 +94,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of a dog. <a href="https://random.dog/woof.json">[API]</a>
     </td>
     <td>
-      10sec
+      10 sec
     </td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of an axolotl and a random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
     </td>
     <td>
-      10sec
+      10 sec
     </td>
   </tr>
   <tr>
@@ -116,7 +116,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Get an genius link to the questioned lyrics! <a href="https://some-random-api.ml/lyrics?title=">[API]</a>
     </td>
     <td>
-      10sec
+      10 sec
     </td>
   </tr>
   <tr>
@@ -127,7 +127,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Replies with an random picture out of the r/Apustaja reddit <a href="https://meme-api.herokuapp.com/gimme/Apustaja">[API]</a>
     </td>
     <td>
-      10sec
+      10 sec
     </td>
   </tr>
 </table>
@@ -153,7 +153,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       With this command you can collect points from 1-6 every hour.
     </td>
     <td>
-      1h
+      1 h
     </td>
   </tr>
   <tr>
@@ -164,7 +164,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       While you can only collect points from 1-6 with the "?Dice" command, with the "?BigDice" you can collect up to 20 points but also lose up to 20 points. The cooldown is 3 hours.
     </td>
     <td>
-      3h
+      3 h
     </td>
   </tr>
   <tr>
@@ -175,7 +175,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Checks your current points or of someone else.
     </td>
     <td>
-      15sec
+      15 sec
     </td>
   </tr>
   <tr>
@@ -186,7 +186,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
     </td>
     <td>
-      15sec
+      15 sec
     </td>
   </tr>
   <tr>
@@ -197,7 +197,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       You can buy different emotes ("?shop") wich will then display befor you name in any dice command.
     </td>
     <td>
-      15sec
+      15 sec
     </td>
   </tr>
   <tr>
@@ -208,7 +208,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       With this command you can display your collected emotes.
     </td>
     <td>
-      15sec
+      15 sec
     </td>
   </tr>
   <tr>
@@ -219,7 +219,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Lets you equip any emote you collected so far.
     </td>
     <td>
-      15sec
+      15 sec
     </td>
   </tr>
   <tr>
@@ -230,7 +230,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       If you want to earn or lose some points you can fight an user (?DiceFight [Username] [Points]).
     </td>
     <td>
-      20sec
+      20 sec
     </td>
   </tr>
   <tr>
@@ -241,7 +241,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       You can gift up to 10 points to an user.
     </td>
     <td>
-      50sec
+      50 sec
     </td>
   </tr>
 </table>
