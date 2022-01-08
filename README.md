@@ -53,6 +53,17 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       15 s
     </td>
   </tr>
+    <tr>
+    <td>
+      Shuffle
+    </td>
+    <td>
+      Shuffles the given words.
+    </td>
+    <td>
+      15 s
+    </td>
+  </tr>
   <tr>
     <td>
       Shiba
