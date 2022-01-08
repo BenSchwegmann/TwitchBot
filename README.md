@@ -161,7 +161,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       BigDice
     </td>
     <td>
-      While you can only collect points from 1-6 with the "?Dice" command, with the "?BigDice" you can collect up to 20 points but also lose up to 20 points. The cooldown is 3 hours.
+      While you can only collect points from 1-6 with the "?Dice" command, <br/> with the "?BigDice" you can collect up to 20 points but also lose up to 20 points. The cooldown is 3 hours.
     </td>
     <td>
       3 h
