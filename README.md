@@ -28,7 +28,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Checks if the bot is online. Also gives back the runtime!
     </td>
     <td>
-      15sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -39,7 +39,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Directs you to this page.
     </td>
     <td>
-      15sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -50,7 +50,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Directs you to the bots website.
     </td>
     <td>
-      15sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -61,7 +61,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns a random picture of a shiba. <a href="http://shibe.online/api/shibes">[API]</a>
     </td>
     <td>
-      10sec
+      10 s
     </td>
   </tr>
   <tr>
@@ -72,7 +72,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of a duck. <a href="https://random-d.uk/api/random">[API]</a>
     </td>
     <td>
-      10 sec
+      10 s
     </td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of a cat and a random fact about them. <a href="https://aws.random.cat/meow">[API]</a> & <a href="https://catfact.ninja/fact">[API]</a>
     </td>
     <td>
-      10 sec
+      10 s
     </td>
   </tr>
   <tr>
@@ -94,7 +94,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of a dog. <a href="https://random.dog/woof.json">[API]</a>
     </td>
     <td>
-      10 sec
+      10 s
     </td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Returns an random picture of an axolotl and a random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
     </td>
     <td>
-      10 sec
+      10 s 
     </td>
   </tr>
   <tr>
@@ -116,7 +116,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Get an genius link to the questioned lyrics! <a href="https://some-random-api.ml/lyrics?title=">[API]</a>
     </td>
     <td>
-      10 sec
+      10 s
     </td>
   </tr>
   <tr>
@@ -127,7 +127,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Replies with an random picture out of the r/Apustaja reddit <a href="https://meme-api.herokuapp.com/gimme/Apustaja">[API]</a>
     </td>
     <td>
-      10 sec
+      10 s
     </td>
   </tr>
 </table>
@@ -175,7 +175,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Checks your current points or of someone else.
     </td>
     <td>
-      15 sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -186,7 +186,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       You will be pinged when you can roll your next dice. If you want to turn the ping of type "?set pingme 0".
     </td>
     <td>
-      15 sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -197,7 +197,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       You can buy different emotes ("?shop") wich will then display befor you name in any dice command.
     </td>
     <td>
-      15 sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -208,7 +208,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       With this command you can display your collected emotes.
     </td>
     <td>
-      15 sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -219,7 +219,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       Lets you equip any emote you collected so far.
     </td>
     <td>
-      15 sec
+      15 s
     </td>
   </tr>
   <tr>
@@ -230,7 +230,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       If you want to earn or lose some points you can fight an user (?DiceFight [Username] [Points]).
     </td>
     <td>
-      20 sec
+      20 s
     </td>
   </tr>
   <tr>
@@ -241,7 +241,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       You can gift up to 10 points to an user.
     </td>
     <td>
-      50 sec
+      50 s
     </td>
   </tr>
 </table>
