@@ -53,7 +53,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       15 s
     </td>
   </tr>
-    <tr>
+  <tr>
     <td>
       Shuffle
     </td>
@@ -64,8 +64,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       15 s
     </td>
   </tr>
-    </tr>
-    <tr>
+  <tr>
     <td>
       Set
     </td>
