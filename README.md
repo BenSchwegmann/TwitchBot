@@ -282,4 +282,5 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     <td>
       50 s
     </td>
+  </tr>
 </table>
