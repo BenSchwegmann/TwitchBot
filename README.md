@@ -182,7 +182,7 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       <b> Description </b>
     </th>
     </th>
-      <b> Cooldown </b>
+      <b> </b>
   </tr>
   <tr>
     <td>
