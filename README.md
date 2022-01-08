@@ -64,6 +64,34 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       15 s
     </td>
   </tr>
+    </tr>
+    <tr>
+    <td>
+      Set
+    </td>
+    <td>
+      <table>
+        <tr>
+          <td>
+            PingMe [0 or 1]
+          </td>
+          <td>
+            It will set or unset an ping for the dices.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Live [0 or 1]
+          </td>
+          <td>
+            The bot will stop writing in your chat if your live.
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      15 s
+    </td>
   <tr>
     <td>
       Shiba
@@ -254,5 +282,4 @@ If you have any suggestions for the bot or want the bot in your channel, please 
     <td>
       50 s
     </td>
-  </tr>
 </table>
