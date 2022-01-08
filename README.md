@@ -174,4 +174,12 @@ If you have any suggestions for the bot or want the bot in your channel, please 
       If you want to earn or lose some points you can fight an user (?DiceFight [Username] [Points]).
     </td>
   </tr>
+  <tr>
+    <td>
+      Gift
+    </td>
+    <td>
+      You can gift up to 10 points to an user.
+    </td>
+  </tr>
 </table>
