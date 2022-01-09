@@ -1,32 +1,62 @@
-  [
-    {
-      "EmoteNr": 1,
-      "Name": "EleGiggle",
-      "Price": 50
-    },
-    {
-      "EmoteNr": 2,
-      "Name": "ppL",
-      "Price": 100
-    },
-    {
-      "EmoteNr": 3,
-      "Name": "SourPls",
-      "Price": 200
-    },
-    {
-      "EmoteNr": 4,
-      "Name": "AlienDance",
-      "Price": 250
-    },
-    {
-      "EmoteNr": 5,
-      "Name": ":tf:",
-      "Price": 300
-    },
-    {
-      "EmoteNr": 6,
-      "Name": "BasedGod",
-      "Price": 400
-    }
-  ]
+[
+  {
+    "EmoteNr": 1,
+    "Name": "EleGiggle",
+    "Price": 50
+  },
+  {
+    "EmoteNr": 2,
+    "Name": "ppL",
+    "Price": 100
+  },
+  {
+    "EmoteNr": 3,
+    "Name": "SourPls",
+    "Price": 200
+  },
+  {
+    "EmoteNr": 4,
+    "Name": "AlienDance",
+    "Price": 250
+  },
+  {
+    "EmoteNr": 5,
+    "Name": ":tf:",
+    "Price": 300
+  },
+  {
+    "EmoteNr": 6,
+    "Name": "BasedGod",
+    "Price": 400
+  },
+  {
+    "EmoteNr": 7,
+    "Name": "Stare",
+    "Price": 1000
+  },
+  {
+    "EmoteNr": 8,
+    "Name": "RaccAttack",
+    "Price": 1400
+  },
+  {
+    "EmoteNr": 9,
+    "Name": "ConcernDoge",
+    "Price": 1800
+  },
+  {
+    "EmoteNr": 10,
+    "Name": "NaM",
+    "Price": 2200
+  },
+  {
+    "EmoteNr": 11,
+    "Name": "BillyApprove",
+    "Price": 2600
+  },
+  {
+    "EmoteNr": 12,
+    "Name": "BatChest",
+    "Price": 3000
+  }
+]

@@ -3,6 +3,7 @@ using ApuDoingStuff.Commands.DiceGame;
 using ApuDoingStuff.Database;
 using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Jsons;
+using ApuDoingStuff.Utils;
 using HLE.Collections;
 using HLE.Emojis;
 using HLE.Strings;
@@ -198,7 +199,30 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                return $"/me APU @{chatMessage.Username}, you do not have this emote yet!";
+                int emoteNr = chatMessage.Message.Split()[1].ToInt();
+                if (user.EmoteNr.Split().Any(s => s == chatMessage.Message.Split()[1]))
+                {
+                    if (JsonController.Ranks.Any(r => r.EmoteNr == emoteNr))
+                    {
+                        foreach (Rank r in JsonController.Ranks)
+                        {
+                            if (r.EmoteNr == emoteNr)
+                            {
+                                DbController.SetRank(chatMessage.Username, r.Name);
+                                return $"/me APU @{chatMessage.Username}, you succesfully equipped: {r.Name}";
+                            }
+                        }
+                        return string.Empty;
+                    }
+                    else
+                    {
+                        return $"/me APU @{chatMessage.Username}, this rank doesn't exists!";
+                    }
+                }
+                else
+                {
+                    return $"/me APU @{chatMessage.Username}, you do not have this emote yet or this rank doesn't exists!";
+                }
             }
         }
 
@@ -278,7 +302,6 @@ namespace ApuDoingStuff.Twitch
                 }
                 else
                 {
-
                     if (chatMessage.Message.Split()[2].All(char.IsDigit))
                     {
                         int points = chatMessage.Message.Split()[2].ToInt();
@@ -288,10 +311,19 @@ namespace ApuDoingStuff.Twitch
                             {
                                 if (user != null && user.Points >= 0)
                                 {
-                                    DbController.SubPoints(chatMessage.Username, points);
-                                    DbController.AddPoints(chatMessage.Message.Split()[1], points);
-                                    split1.Points += points;
-                                    return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} point!";
+                                    if (chatMessage.Message.Split()[1] != "random")
+                                    {
+                                        DbController.SubPoints(chatMessage.Username, points);
+                                        DbController.AddPoints(chatMessage.Message.Split()[1], points);
+                                        return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} point!";
+                                    }
+                                    else
+                                    {
+                                        string randUser = database.Dicegamedbs.ToList().Random().UserName;
+                                        DbController.SubPoints(chatMessage.Username, points);
+                                        DbController.AddPoints(randUser, points);
+                                        return $"/me APU @{chatMessage.Username} you gifted @{randUser} {points} point!";
+                                    }
                                 }
                                 else
                                 {
@@ -302,10 +334,19 @@ namespace ApuDoingStuff.Twitch
                             {
                                 if (user != null && user.Points >= 0)
                                 {
-                                    DbController.SubPoints(chatMessage.Username, points);
-                                    DbController.AddPoints(chatMessage.Message.Split()[1], points);
-                                    split1.Points += points;
-                                    return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} points!";
+                                    if (chatMessage.Message.Split()[1] != "random")
+                                    {
+                                        DbController.SubPoints(chatMessage.Username, points);
+                                        DbController.AddPoints(chatMessage.Message.Split()[1], points);
+                                        return $"/me APU @{chatMessage.Username} you gifted @{chatMessage.Message.Split()[1]} {points} point!";
+                                    }
+                                    else
+                                    {
+                                        string randUser = database.Dicegamedbs.ToList().Random().UserName;
+                                        DbController.SubPoints(chatMessage.Username, points);
+                                        DbController.AddPoints(randUser, points);
+                                        return $"/me APU @{chatMessage.Username} you gifted @{randUser} {points} point!";
+                                    }
                                 }
                                 else
                                 {
@@ -334,15 +375,22 @@ namespace ApuDoingStuff.Twitch
         {
             Dicegamedb user = DbController.GetFirstOrDefault(chatMessage.Username);
             string result = "";
-            if (user.Locker != null)
+            if (user == null)
             {
-                string[] ranks = user.Locker.Split();
-                ranks.ForEach(d => result += $" {d} |");
-                return $"/me APU @{chatMessage.Username}, you already collected these emotes: {result}| [currently equipped: {user.Rank} ]";
+                if (user.Locker != null)
+                {
+                    string[] ranks = user.Locker.Split();
+                    ranks.ForEach(d => result += $" {d} |");
+                    return $"/me APU @{chatMessage.Username}, you already collected these emotes: {result}| [currently equipped: {user.Rank} ]";
+                }
+                else
+                {
+                    return $"/me APU @{chatMessage.Username}, you have currently no emotes in your locker. If you want to buy an emote use the \"?buy\" command";
+                }
             }
             else
             {
-                return $"/me APU @{chatMessage.Username}, you have currently no emotes in your locker. If you want to buy an emote use the \"?buy\" command";
+                return $"/me APU @{chatMessage.Username}, you have currently no emotes in your locker. If you want to buy an emote you need to earn points (\"?Dice\")!";
             }
         }
 
@@ -365,7 +413,7 @@ namespace ApuDoingStuff.Twitch
                 Dicegamedb split1 = DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]);
                 if (split1 != null)
                 {
-                    return $"/me APU [ {user.Rank} ] @{chatMessage.Message.Split()[1]} current points: {DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]).Points}";
+                    return $"/me APU [ {DbController.GetRank(chatMessage.Message.Split()[1])} ] @{chatMessage.Message.Split()[1]} current points: {DbController.GetFirstOrDefault(chatMessage.Message.Split()[1]).Points}";
                 }
                 else
                 {
@@ -376,9 +424,28 @@ namespace ApuDoingStuff.Twitch
 
         public static string SendShop(ChatMessage chatMessage)
         {
-            string result = "";
-            JsonController.Ranks.ForEach(r => result += $"{r.Name} No.: {r.EmoteNr}, Price: {r.Price} || ");
-            return $"/me APU @{chatMessage.Username}, here is a list of all emotes you can buy and their prices: {result}";
+            string result = string.Empty;
+            string returnResult = string.Empty;
+            if (chatMessage.Message.Split().Length >= 2)
+            {
+                switch (chatMessage.Message.Split()[1])
+                {
+                    case "1" or null:
+                        JsonController.Ranks.Take(6).ForEach(r => result += $"{r.Name} No.: {r.EmoteNr}, Price: {r.Price} || ");
+                        returnResult = $"/me APU @{chatMessage.Username}, here is the first page of emotes you can buy and their prices: {result}";
+                        break;
+                    case "2":
+                        JsonController.Ranks.Skip(6).ForEach(r => result += $"{r.Name} No.: {r.EmoteNr}, Price: {r.Price} || ");
+                        returnResult = $"/me APU @{chatMessage.Username}, here is the second page of emotes you can buy and their prices: {result}";
+                        break;
+                }
+            }
+            else
+            {
+                JsonController.Ranks.Take(6).ForEach(r => result += $"{r.Name} No.: {r.EmoteNr}, Price: {r.Price} || ");
+                returnResult = $"/me APU @{chatMessage.Username}, here is the first page of emotes you can buy and their prices: {result}";
+            }
+            return returnResult;
         }
 
         public static string SendTopPlayers(ChatMessage chatMessage)
@@ -393,7 +460,7 @@ namespace ApuDoingStuff.Twitch
                     if (split1.Equals("all"))
                     {
                         List<Dicegamedb> topPlayers = database.Dicegamedbs.OrderByDescending(d => d.Points).ToList();
-                        topPlayers.ForEach(d => result += $"{d.UserName.Insert(2, "󠀀")}, Points: {d.Points} || ");
+                        topPlayers.ForEach(d => result += $"{d.UserName.Antiping()}, Points: {d.Points} || ");
                         return $"/me APU @{chatMessage.Username}, the top list: {result}";
                     }
                     else
