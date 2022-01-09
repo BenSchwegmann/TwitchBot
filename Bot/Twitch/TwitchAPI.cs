@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using TwitchLib.Api.Helix.Models.Streams.GetStreams;
 using TwitchLib.Api.V5.Models.Channels;
 using TwitchLib.Api.V5.Models.Subscriptions;
 
@@ -24,7 +25,6 @@ namespace ApuDoingStuff.Twitch
 
         public static string GetAccessToken()
         {
-
             HttpPost request = new("https://id.twitch.tv/oauth2/token",
                 new()
                 {
@@ -62,6 +62,12 @@ namespace ApuDoingStuff.Twitch
         public static async Task<Subscription> UserSubscriptions(string channel, string user)
         {
             return await _api.V5.Users.CheckUserSubscriptionByChannelAsync(GetChannelID(user), GetChannelID(channel), Resources.TwitchApiClientID);
+        }
+
+        public static bool IsLive(string channel)
+        {
+            GetStreamsResponse response = _api.Helix.Streams.GetStreamsAsync(userLogins: new List<string> { channel }).Result;
+            return response.Streams.Any();
         }
     }
 }
