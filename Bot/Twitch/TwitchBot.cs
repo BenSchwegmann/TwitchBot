@@ -73,7 +73,6 @@ namespace ApuDoingStuff.Twitch
             {
                 AutoReListenOnException = true
             };
-            TwitchClient.Initialize(ConnectionCredentials, Config.GetChannels());
             TwitchClient.OnLog += Client_OnLog;
             TwitchClient.OnConnected += Client_OnConnected;
             TwitchClient.OnJoinedChannel += Client_OnJoinedChannel;
@@ -84,6 +83,12 @@ namespace ApuDoingStuff.Twitch
             TwitchClient.OnError += Client_OnError;
             TwitchClient.OnDisconnected += Client_OnDisconnect;
             TwitchClient.OnReconnected += Client_OnReconnected;
+
+#if DEBUG
+            TwitchClient.Initialize(ConnectionCredentials, Resources.pajaShh.Split()[0]);
+#else
+        TwitchClient.Initialize(ConnectionCredentials, Config.GetChannels());
+#endif
 
             TwitchClient.Connect();
             Initlialize();
@@ -110,7 +115,7 @@ namespace ApuDoingStuff.Twitch
 
         public string GetSystemInfo()
         {
-            return $"{GetRuntime()} || Memory usage: {GetMemoryUsage()} MB / 16000 MB";
+            return $"{GetRuntime()} || Memory usage: {GetMemoryUsage()} MB / 4000 MB";
         }
 
         public string GetRuntime()

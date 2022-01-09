@@ -4,43 +4,37 @@
       "CommandName": "ping",
       "Description": "Checks if the bot is online. Also gives back the runtime!",
       "NeededPermission": 0,
-      "Cooldown": 20000
-    },
-    {
-      "CommandName": "color",
-      "Description": "Returns the HEX Color Code and the RGBA Color Space of your twitch name.",
-      "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "commands",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "set",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 10000
+      "Cooldown": 15000
     },
     {
       "CommandName": "racc",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "join",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "leave",
       "Description": "The bot will leave the channel",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 15000
     },
     {
       "CommandName": "dice",
@@ -52,7 +46,7 @@
       "CommandName": "points",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 30000
+      "Cooldown": 15000
     },
     {
       "CommandName": "dicefight",
@@ -64,25 +58,25 @@
       "CommandName": "fight",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 10000
     },
     {
       "CommandName": "github",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "buy",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "shop",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "shiba",
@@ -130,25 +124,25 @@
       "CommandName": "top",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "shuffle",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "locker",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "equip",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
     },
     {
       "CommandName": "gift",
@@ -166,9 +160,14 @@
       "CommandName": "suggest",
       "Description": "-",
       "NeededPermission": 0,
-      "Cooldown": 20000
+      "Cooldown": 15000
+    },
+    {
+      "CommandName": "channels",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 15000
     }
-
   ],
   "MessageCommands": [
     {

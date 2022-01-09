@@ -29,6 +29,7 @@
         Gift,
         Apu,
         Suggest,
+        Channels,
     }
 
     public enum MessageType
