@@ -2,6 +2,7 @@
 using ApuDoingStuff.Commands;
 using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Properties;
+using ApuDoingStuff.Utils;
 using HLE.Collections;
 using HLE.Emojis;
 using HLE.Time;
@@ -191,6 +192,12 @@ namespace ApuDoingStuff.Twitch
                 words.Remove(word);
             }
             return $"/me {result}";
+        }
+
+        public static string GetChannels(ChatMessage chatMessage)
+        {
+            BotdbContext database = new();
+            return $"/me APU @{chatMessage.Username}, these are all channel i'm connected to: {string.Join(", ", database.Channels.Where(d => d.Channel1 != Resources.pajaShh.Split()[0] && d.Channel1 != "ApuDoingStuff").Select(d => d.Channel1.Antiping()))}";
         }
     }
 }
