@@ -251,6 +251,17 @@ If you want this bot in your channel, please whisper the [bot owner](https://twi
       15 s
     </td>
   </tr>
+    <tr>
+    <td>
+      Shop
+    </td>
+    <td>
+      Displays the ranks and their prices (page 1 and 2)
+    </td>
+    <td>
+      15 s
+    </td>
+  </tr>
   <tr>
     <td>
       Locker
