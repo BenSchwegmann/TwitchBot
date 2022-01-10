@@ -95,7 +95,7 @@ If you want this bot in your channel, please whisper the [bot owner](https://twi
       <table>
         <tr>
           <td>
-            PingMe [0 or 1]
+            PingMe [0 / 1]
           </td>
           <td>
             It will set or unset an ping for the dices.
@@ -251,6 +251,34 @@ If you want this bot in your channel, please whisper the [bot owner](https://twi
       15 s
     </td>
   </tr>
+    <tr>
+    <td>
+      Shop
+    </td>
+    <td>
+      <table>
+        <tr>
+          <td>
+            Emotes / Ranks [1 / 2]
+          </td>
+          <td>
+            Displays the first or second page of emote you can buy.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Accessoires / Acs 
+          </td>
+          <td>
+            Displays all accessoires you can buy.
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      15 s
+    </td>
+  </tr>
   <tr>
     <td>
       Locker
@@ -267,7 +295,24 @@ If you want this bot in your channel, please whisper the [bot owner](https://twi
       Equip
     </td>
     <td>
-      Lets you equip any emote you collected so far.
+       <table>
+        <tr>
+          <td>
+            Rank / Emote [emote]
+          </td>
+          <td>
+            Sets your current rank.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Accessoire / Acs [emote]
+          </td>
+          <td>
+            Sets your current asseccoire
+          </td>
+        </tr>
+      </table>
     </td>
     <td>
       15 s
