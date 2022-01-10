@@ -59,6 +59,11 @@ namespace ApuDoingStuff.Twitch
             return $"/me APU @{chatMessage.Username}, here you can find all commands: https://benastro.github.io/ApuDoingStuff/";
         }
 
+        public static string GetHelp(ChatMessage chatMessage)
+        {
+            return $"/me APU @{chatMessage.Username}, here you can find all commands: https://benastro.github.io/ApuDoingStuff/";
+        }
+
         public static string GetGitHub(ChatMessage chatMessage)
         {
             return $"/me APU @{chatMessage.Username}, here you can find the repository of the bot https://github.com/benASTRO/ApuDoingStuff";

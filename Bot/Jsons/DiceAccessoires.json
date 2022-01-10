@@ -1,0 +1,32 @@
+[
+  {
+    "AcsNr": 1,
+    "Name": "WineTime",
+    "Price": 300,
+    "IsZeroWidth": false
+  },
+  {
+    "AcsNr": 2,
+    "Name": "cvHazmat",
+    "Price": 400,
+    "IsZeroWidth": true
+  },
+  {
+    "AcsNr": 3,
+    "Name": "CrayonTime",
+    "Price": 500,
+    "IsZeroWidth": false
+  },
+  {
+    "AcsNr": 4,
+    "Name": "TeaTime",
+    "Price": 600,
+    "IsZeroWidth": false
+  },
+  {
+    "AcsNr": 5,
+    "Name": "SteerR",
+    "Price": 700,
+    "IsZeroWidth": true
+  }
+]

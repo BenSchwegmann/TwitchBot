@@ -56,13 +56,17 @@ namespace ApuDoingStuff.Database.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("ID");
 
+                entity.Property(e => e.Accessoire)
+                    .HasMaxLength(50)
+                    .HasDefaultValueSql("'NULL'");
+
+                entity.Property(e => e.AcsNr)
+                    .HasMaxLength(500)
+                    .HasDefaultValueSql("'''0'''");
+
                 entity.Property(e => e.EmoteNr)
                     .HasMaxLength(50)
                     .HasDefaultValueSql("'''0'''");
-
-                entity.Property(e => e.Locker)
-                    .HasMaxLength(500)
-                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.PingMe)
                     .HasColumnType("bit(1)")

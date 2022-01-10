@@ -9,7 +9,8 @@ namespace ApuDoingStuff.Database.Models
         public int? Points { get; set; }
         public bool? PingMe { get; set; }
         public string Rank { get; set; }
+        public string Accessoire { get; set; }
         public string EmoteNr { get; set; }
-        public string Locker { get; set; }
+        public string AcsNr { get; set; }
     }
 }
