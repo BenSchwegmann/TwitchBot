@@ -12,10 +12,10 @@ namespace ApuDoingStuff.Database
             database.SaveChanges();
         }
 
-        public static void AddLocker(string username, string name)
+        public static void AddAcsNr(string username, string acsNr)
         {
             BotdbContext database = new();
-            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Locker += name;
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).AcsNr += acsNr;
             database.SaveChanges();
         }
 
@@ -43,10 +43,23 @@ namespace ApuDoingStuff.Database
             return database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Rank;
         }
 
+        public static string GetAcs(string username)
+        {
+            BotdbContext database = new();
+            return database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Accessoire;
+        }
+
         public static void SetRank(string username, string emote)
         {
             BotdbContext database = new();
             database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Rank = emote;
+            database.SaveChanges();
+        }
+
+        public static void SetAcs(string username, string acs)
+        {
+            BotdbContext database = new();
+            database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).Accessoire = acs;
             database.SaveChanges();
         }
 

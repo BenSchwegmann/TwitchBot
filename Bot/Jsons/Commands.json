@@ -167,6 +167,18 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 15000
+    },
+    {
+      "CommandName": "help",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 15000
+    },
+    {
+      "CommandName": "unset",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 15000
     }
   ],
   "MessageCommands": [

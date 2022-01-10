@@ -85,7 +85,7 @@ namespace ApuDoingStuff.Twitch
             TwitchClient.OnReconnected += Client_OnReconnected;
 
 #if DEBUG
-            TwitchClient.Initialize(ConnectionCredentials, Resources.pajaShh.Split()[0]);
+            TwitchClient.Initialize(ConnectionCredentials, "ApuDoingStuff");
 #else
         TwitchClient.Initialize(ConnectionCredentials, Config.GetChannels());
 #endif

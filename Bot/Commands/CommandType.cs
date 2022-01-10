@@ -30,6 +30,8 @@
         Apu,
         Suggest,
         Channels,
+        Help,
+        Unset,
     }
 
     public enum MessageType
