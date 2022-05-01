@@ -160,13 +160,13 @@ namespace ApuDoingStuff.Twitch
                 if (user != null)
                 {
                     DbController.AddPoints(chatMessage.Username, randDice);
-                    return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, you got a {randDice} {Emoji.GameDie} [current points: {user.Points + randDice}]";
+                    return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, you got {randDice} {Emoji.GameDie} [current points: {user.Points + randDice}]";
                 }
                 else
                 {
                     _ = database.Dicegamedbs.Add(new Dicegamedb { UserName = chatMessage.Username, Points = randDice, PingMe = true, Rank = "-" });
                     database.SaveChanges();
-                    return $"/me APU @{chatMessage.Username}, you got a {randDice}";
+                    return $"/me APU @{chatMessage.Username}, you got {randDice}";
                 }
             }
         }
@@ -231,7 +231,7 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, to fight against a user you need to type the username of your opponent and the points you would like to set. (eg. \"?DiceFight forsen 213\")";
+                return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, to fight against an user you need to type the username of your opponent and the points you would like to set. (eg. \"?DiceFight forsen 213\")";
             }
         }
 
