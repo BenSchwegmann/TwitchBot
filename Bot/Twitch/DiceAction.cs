@@ -160,13 +160,13 @@ namespace ApuDoingStuff.Twitch
                 if (user != null)
                 {
                     DbController.AddPoints(chatMessage.Username, randDice);
-                    return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, you got a {randDice} {Emoji.GameDie} [current points: {user.Points + randDice}]";
+                    return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, you got {randDice} {Emoji.GameDie} [current points: {user.Points + randDice}]";
                 }
                 else
                 {
                     _ = database.Dicegamedbs.Add(new Dicegamedb { UserName = chatMessage.Username, Points = randDice, PingMe = true, Rank = "-" });
                     database.SaveChanges();
-                    return $"/me APU @{chatMessage.Username}, you got a {randDice}";
+                    return $"/me APU @{chatMessage.Username}, you got {randDice}";
                 }
             }
         }
@@ -231,7 +231,7 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, to fight against a user you need to type the username of your opponent and the points you would like to set. (eg. \"?DiceFight forsen 213\")";
+                return $"/me APU {StringHelper.Rank(chatMessage.Username)} @{chatMessage.Username}, to fight against an user you need to type the username of your opponent and the points you would like to set. (eg. \"?DiceFight forsen 213\")";
             }
         }
 
@@ -674,12 +674,12 @@ namespace ApuDoingStuff.Twitch
         {
             switch (randDice)
             {
-                case >= 30: return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS {StringHelper.Rank(username)} @{username.ToUpper()} YOU GOT AN {randDice}!!!";
-                case >= 20: return $"/me APU {Emoji.PointRight}{Emoji.PointLeft} {StringHelper.Rank(username)} @{username} h...here is an +{randDice} for you.";
-                case >= 10: return $"/me APU {Emoji.MagicWand} {Emoji.Sparkles} {StringHelper.Rank(username)} @{username} the great apu wizard gives you an well deserved {randDice}! {Emoji.Sparkles}";
-                case > 0: return $"/me FBPass APU FBBlock RUUUNNNN {StringHelper.Rank(username)} @{username.ToUpper()} OR YOU WILL MISS YOUR +{randDice}!";
-                case < -10: return $"/me APU {StringHelper.Rank(username)} @{username} oh well that's sad ... you got an {randDice} :(";
-                case <= 0: return $"/me APU {StringHelper.Rank(username)} @{username} sooo unlucky you got an {randDice}! :/";
+                case >= 30: return $"/me APU {Emoji.ConfettiBall} WOAAAHHH APUUUU CONGRATS {StringHelper.Rank(username)} @{username.ToUpper()} YOU GOT {randDice}!!!";
+                case >= 20: return $"/me APU {Emoji.PointRight}{Emoji.PointLeft} {StringHelper.Rank(username)} @{username} h...here is {randDice} for you.";
+                case >= 10: return $"/me APU {Emoji.MagicWand} {Emoji.Sparkles} {StringHelper.Rank(username)} @{username} the great apu wizard gives you a well deserved {randDice}! {Emoji.Sparkles}";
+                case > 0: return $"/me FBPass APU FBBlock RUUUNNNN {StringHelper.Rank(username)} @{username.ToUpper()} OR YOU WILL MISS YOUR {randDice}!";
+                case < -10: return $"/me APU {StringHelper.Rank(username)} @{username} oh well that's sad ... you got {randDice} :(";
+                case <= 0: return $"/me APU {StringHelper.Rank(username)} @{username} sooo unlucky you got {randDice}! :/";
             }
         }
     }

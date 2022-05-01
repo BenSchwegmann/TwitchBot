@@ -85,7 +85,7 @@ namespace ApuDoingStuff.Twitch
             }
             else
             {
-                return $"/me APU @{chatMessage.Username}, you need to add an suggestion to your message.";
+                return $"/me APU @{chatMessage.Username}, you need to add a suggestion to your message.";
             }
         }
 
