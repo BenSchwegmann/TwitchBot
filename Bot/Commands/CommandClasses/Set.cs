@@ -25,11 +25,11 @@ namespace ApuDoingStuff.Commands.CommandClasses
 
                 if (database.Dicegamedbs.FirstOrDefault(b => b.UserName == chatMessage.Username).PingMe == true)
                 {
-                    twitchBot.Send(chatMessage.Channel, $"/me APU you will now get a ping when your next dice is ready!");
+                    twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you will now get a ping when your next dice is ready!");
                 }
                 else
                 {
-                    twitchBot.Send(chatMessage.Channel, $"/me APU you will not get pinged when your next dice is ready!");
+                    twitchBot.Send(chatMessage.Channel, $"/me APU @{chatMessage.Username}, you will not get pinged when your next dice is ready!");
                 }
             }
 

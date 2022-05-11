@@ -1,13 +1,18 @@
-﻿using ApuDoingStuff.Commands.DiceGame;
+﻿using ApuDoingStuff.Commands;
+using ApuDoingStuff.Commands.CommandClasses.Timer;
+using ApuDoingStuff.Commands.DiceGame;
 using ApuDoingStuff.Database.Models;
 using ApuDoingStuff.Messages;
 using ApuDoingStuff.Properties;
 using HLE.Emojis;
 using HLE.Numbers;
+using HLE.Strings;
+using HLE.Time;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Timers;
 using TwitchLib.Client;
 using TwitchLib.Client.Enums;
 using TwitchLib.Client.Events;
@@ -44,10 +49,13 @@ namespace ApuDoingStuff.Twitch
         public static readonly Dictionary<string, string> DiceTimer = new();
         public static readonly List<FightAccept> FightAccepts = new();
         public static readonly List<FightSaveTimer> FightSaveTimers = new();
+        public static readonly List<WordleGame> WordleGames = new();
+        public static readonly List<WordleTimer> WordleTimers = new();
         public const int MaxLenght = 500;
 
+        public Timer ApiTimer { get; private set; }
 
-
+        public long TwitchPing { get; private set; }
 
         public string Runtime => ConvertUnixTimeToTimeStamp(_runtime);
 
@@ -59,7 +67,12 @@ namespace ApuDoingStuff.Twitch
         {
             ConnectionCredentials = new("ApuDoingStuff", Resources.Token);
 
-
+            ApiTimer = new(60000)
+            {
+                AutoReset = true,
+                Enabled = true,
+            };
+            //ApiTimer.Elapsed += ApiTimer_OnElapsed;
 
             ClientOptions = new()
             {
@@ -87,7 +100,7 @@ namespace ApuDoingStuff.Twitch
 #if DEBUG
             TwitchClient.Initialize(ConnectionCredentials, "ApuDoingStuff");
 #else
-        TwitchClient.Initialize(ConnectionCredentials, Config.GetChannels());
+            TwitchClient.Initialize(ConnectionCredentials, Config.GetChannels());
 #endif
 
             TwitchClient.Connect();
@@ -134,12 +147,18 @@ namespace ApuDoingStuff.Twitch
             return $"The bot is currently in {database.Channels.Max(u => u.Id)} channels";
 
         }
+
+        public void GetPing(ChatMessage chatMessage)
+        {
+            TwitchPing = TimeHelper.Now() - chatMessage.TmiSentTs.ToLong();
+        }
         #endregion SystemInfo
 
         #region Bot_On
 
         private void Client_OnLog(object sender, OnLogArgs e)
         {
+            //Console.WriteLine(e.Data);
         }
 
         private void Client_OnConnected(object sender, OnConnectedArgs e)
@@ -221,6 +240,16 @@ namespace ApuDoingStuff.Twitch
             }
         }
 
+        public static void SendWordlePing(TwitchBot twitchBot, string channel, string username)
+        {
+            BotdbContext database = new();
+
+            if (database.Dicegamedbs.FirstOrDefault(d => d.UserName == username).PingMe == true)
+            {
+                twitchBot.Send(channel, $"/me APU / {Emoji.Bell} @{username} you can solve your next wordle! {Emoji.Pen}");
+            }
+        }
+
         public static void FightTimerExpired(TwitchBot twitchBot, string channel, string opponent, string challenger)
         {
             twitchBot.Send(channel, $"/me APU @{challenger}, your opponent ( @{opponent} ) didn't showed up to the fight :/");
@@ -230,5 +259,22 @@ namespace ApuDoingStuff.Twitch
         {
             Restarter.InitializeResartTimer();
         }
+
+        //public void ApiTimer_OnElapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    ApiData api = new()
+        //    {
+        //        Ping = TwitchPing,
+        //        MemoryUsage = GetMemoryUsage(),
+        //        Uptime = Runtime,
+        //        Channels = Config.GetChannels().Count,
+        //    };
+        //    string jsonValue = JsonSerializer.Serialize(api, new JsonSerializerOptions()
+        //    {
+        //        WriteIndented = true,
+        //    });
+        //    File.WriteAllText(@"C:\Users\BenSc\Documents\ApuDoingStuff\BotAPI\bin\Debug\net6.0\ApiDataJson.json", jsonValue);
+        //    Console.WriteLine("Pag");
+        //}
     }
 }

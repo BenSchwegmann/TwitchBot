@@ -15,7 +15,7 @@ namespace ApuDoingStuff.Commands
             {
                 BotdbContext database = new();
                 bool? ifLive = database.Channels.FirstOrDefault(d => d.Channel1 == chatMessage.Channel).IfLive;
-                bool isLive = TwitchAPI.IsLive(chatMessage.Channel);
+                bool isLive = TwitchApi.IsLive(chatMessage.Channel);
                 if ((ifLive == true && isLive == false) || ifLive == false)
                 {
                     ((CommandType[])Enum.GetValues(typeof(CommandType))).ToList().ForEach(type =>

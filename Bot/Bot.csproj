@@ -7,6 +7,7 @@
     <RootNamespace>ApuDoingStuff</RootNamespace>
     <StartupObject>ApuDoingStuff.Program</StartupObject>
     <ApplicationIcon>ApuDoingStuff.ico</ApplicationIcon>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -69,6 +70,9 @@
 
   <ItemGroup>
 	<None Update="Jsons\DiceRanks.json">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+	<None Update="Jsons\Words.json">
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
   </ItemGroup>

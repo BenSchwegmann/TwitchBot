@@ -6,6 +6,6 @@ namespace ApuDoingStuff.Database.Models
     {
         public int Id { get; set; }
         public string Channel1 { get; set; }
-        public bool? IfLive { get; set; }
+        public bool? IfLive { get; set; } = false;
     }
 }

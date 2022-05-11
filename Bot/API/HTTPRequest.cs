@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace ApuDoingStuff.API
 {
-    public class HTTPRequest
+    public static class HttpRequest
     {
         private const string _randomShibaUrl = "http://shibe.online/api/shibes";
         private const string _randomDuckUrl = "https://random-d.uk/api/random";

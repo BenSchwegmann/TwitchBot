@@ -13,7 +13,7 @@ namespace ApuDoingStuff
         private static void Main(string[] args)
         {
             JsonController.LoadData();
-            TwitchAPI.Configure();
+            TwitchApi.Configure();
             new TwitchBot().SetBot();
 
             while (_running)

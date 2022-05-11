@@ -179,6 +179,12 @@
       "Description": "-",
       "NeededPermission": 0,
       "Cooldown": 15000
+    },
+    {
+      "CommandName": "wordle",
+      "Description": "-",
+      "NeededPermission": 0,
+      "Cooldown": 5000
     }
   ],
   "MessageCommands": [

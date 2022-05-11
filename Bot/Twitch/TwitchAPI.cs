@@ -11,7 +11,7 @@ using TwitchLib.Api.V5.Models.Subscriptions;
 
 namespace ApuDoingStuff.Twitch
 {
-    public static class TwitchAPI
+    public static class TwitchApi
     {
         private static readonly TwitchLib.Api.TwitchAPI _api = new();
 
@@ -54,14 +54,14 @@ namespace ApuDoingStuff.Twitch
             }
         }
 
-        public static string GetChannelID(string channel)
+        public static string GetChannelId(string channel)
         {
             return GetChannelByName(channel).Id;
         }
 
         public static async Task<Subscription> UserSubscriptions(string channel, string user)
         {
-            return await _api.V5.Users.CheckUserSubscriptionByChannelAsync(GetChannelID(user), GetChannelID(channel), Resources.TwitchApiClientID);
+            return await _api.V5.Users.CheckUserSubscriptionByChannelAsync(GetChannelId(user), GetChannelId(channel), Resources.TwitchApiClientID);
         }
 
         public static bool IsLive(string channel)

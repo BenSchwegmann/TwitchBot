@@ -3,6 +3,7 @@ using ApuDoingStuff.Properties;
 using ApuDoingStuff.Twitch;
 using HLE.Collections;
 using HLE.Emojis;
+using System.Linq;
 using TwitchLib.Client.Models;
 
 namespace ApuDoingStuff.Messages
@@ -12,7 +13,7 @@ namespace ApuDoingStuff.Messages
         public static void ApuSquats(TwitchBot twitchBot, ChatMessage chatMessage)
         {
 
-            if (chatMessage.Message == "ApuSquats" && !BotAction.IsOnMessageCooldown(chatMessage.Username, MessageType.ApuSquats))
+            if (chatMessage.Message.Split().Contains("ApuSquats") && !BotAction.IsOnMessageCooldown(chatMessage.Username, MessageType.ApuSquats))
             {
                 BotAction.AddUserToMessageCooldownDictionary(chatMessage.Username, MessageType.ApuSquats);
                 twitchBot.Send(chatMessage.Channel, "ApuSquats");
