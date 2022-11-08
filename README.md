@@ -160,17 +160,6 @@ If you want this bot in your channel, please whisper the [bot owner](https://twi
   </tr>
   <tr>
     <td>
-      Axolotl
-    </td>
-    <td>
-      Returns an random picture of an axolotl and a random fact about them. <a href="https://axoltlapi.herokuapp.com/">[API]</a>
-    </td>
-    <td>
-      10 s 
-    </td>
-  </tr>
-  <tr>
-    <td>
       Lyrics
     </td>
     <td>
