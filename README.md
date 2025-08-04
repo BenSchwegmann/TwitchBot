@@ -1,5 +1,3 @@
-fun little bot
-    
 ## Here you can find a list of all commands:
 
 * Prefix: **?**
